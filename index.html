@@ -441,7 +441,7 @@ html{scroll-padding-top:110px}
 <p><b>FloodGuard AI</b> — শিক্ষামূলক প্রোটোটাইপ; সরকারি সতর্কবার্তার বিকল্প নয়।</p><p><strong>সর্বশেষ হালনাগাদ:</strong> ৩০ অক্টোবর ২০২৬</p><p><a href="https://ffwc.gov.bd/" rel="noopener noreferrer" target="_blank">FFWC সরকারি সাইট ↗</a></p>
 <p>তথ্যসূত্র: <a href="https://open-meteo.com/" rel="noopener" target="_blank">Open-Meteo</a> · <a href="https://ddm.gov.bd/" rel="noopener" target="_blank">DDM</a> · <a href="https://www.ffwc.gov.bd/" rel="noopener" target="_blank">FFWC</a> · <a href="https://rapid.ddm.gov.bd/" rel="noopener" target="_blank">DDM Rapid</a></p></div></footer>
 <script>
-const API_BASE=(window.FLOODGUARD_API_BASE||"http://127.0.0.1:8000").replace(/\/$/,"");
+const API_BASE=(window.FLOODGUARD_API_BASE||"https://floodguard-ai-web.onrender.com").replace(/\/$/,"");
 const $=id=>document.getElementById(id);
 const P=[["ঢাকা",23.81,90.41],["সিলেট",24.90,91.87],["সুনামগঞ্জ",25.07,91.40],["কুড়িগ্রাম",25.81,89.65],["গাইবান্ধা",25.33,89.54],["সিরাজগঞ্জ",24.45,89.70],["বগুড়া",24.85,89.37],["রংপুর",25.74,89.25],["রাজশাহী",24.37,88.60],["ময়মনসিংহ",24.75,90.41],["নেত্রকোণা",24.87,90.73],["চট্টগ্রাম",22.36,91.78],["নোয়াখালী",22.82,91.10],["ফেনী",23.02,91.40],["খুলনা",22.85,89.54],["বরিশাল",22.70,90.37],["জামালপুর",24.92,89.94],["লালমনিরহাট",25.92,89.45],["হবিগঞ্জ",24.37,91.42],["মৌলভীবাজার",24.48,91.77],["কুমিল্লা",23.46,91.18],["চাঁদপুর",23.23,90.66]];
 P.forEach((p,i)=>$("dist").add(new Option(p[0],i)));
