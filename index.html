@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+
+<html lang="bn">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#294d3b" name="theme-color"/>
+<meta content="FloodGuard AI" name="application-name"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="বাংলাদেশের বন্যা প্রস্তুতি, সরকারি নদীর পানি পর্যবেক্ষণ, আবহাওয়া ও জরুরি সহায়তা।" name="description"/>
+<link href="./manifest.json" rel="manifest"/>
+<link href="./favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="./icon-192.png" rel="apple-touch-icon"/>
+<meta content="website" property="og:type"/>
+<meta content="FloodGuard AI — বন্যার আগে, পরিবারের পাশে" property="og:title"/>
+<meta content="বাংলাদেশের বন্যা প্রস্তুতি, নদীর পানি পর্যবেক্ষণ ও জরুরি সহায়তা—সহজ বাংলায়।" property="og:description"/>
+<meta content="https://aurora518abdullah.github.io/floodguard-ai/" property="og:url"/>
+<meta content="https://aurora518abdullah.github.io/floodguard-ai/og-image.png" property="og:image"/>
+<meta content="FloodGuard AI — Bangladesh flood preparedness and river monitoring" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="FloodGuard AI — বন্যার আগে, পরিবারের পাশে" name="twitter:title"/>
+<meta content="বাংলাদেশের বন্যা প্রস্তুতি ও সরকারি নদীর পানি পর্যবেক্ষণ।" name="twitter:description"/>
+<meta content="https://aurora518abdullah.github.io/floodguard-ai/og-image.png" name="twitter:image"/>
+<title>FloodGuard AI — বন্যা প্রস্তুতি ও সহায়তা</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&amp;family=Noto+Serif+Bengali:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#eef4ee;--card:#fffdf7;--ink:#0f2f3a;--mut:#4f6d78;--line:#d3dfd7;--deep:#07242f;--river:#0d5b75;--teal:#1b8f80;--yel:#f0a81c;--org:#c25a14;--red:#b0382b;--ok:#2f8a4f;--serif:"Noto Serif Bengali",Georgia,serif;--sans:"Hind Siliguri",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 var(--sans)}
+button,input,select{font:inherit}button{cursor:pointer}a{color:var(--river)}
+:focus-visible{outline:3px solid var(--yel);outline-offset:2px}
+.wrap{max-width:1100px;margin:auto;padding:0 18px}
+.sos{background:var(--red);color:#fff;text-align:center;font-size:14.5px;font-weight:600;padding:6px 10px}.sos a{color:#fff}
+header{position:sticky;top:0;z-index:20;background:#eef4eef0;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:14px;min-height:56px}
+.logo{font:800 20px var(--serif);color:var(--deep);text-decoration:none;white-space:nowrap}.logo span{color:var(--river)}
+nav{display:flex;gap:2px;overflow:auto;flex:1}nav a{padding:8px 12px;border-radius:99px;color:var(--mut);text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}nav a:hover{background:#0d5b7514;color:var(--river)}
+.call{background:var(--red);color:#fff;border-radius:99px;padding:7px 16px;font-weight:700;text-decoration:none;white-space:nowrap}
+.hero{position:relative;overflow:hidden;color:#fff;padding:56px 0 110px;background:radial-gradient(110% 130% at 88% 0,#14829f,#0a3d51 46%,#07242f)}
+.hero .wrap{display:grid;grid-template-columns:1.5fr .5fr;gap:34px;align-items:center;position:relative;z-index:2}
+.tag{display:inline-block;padding:4px 14px;border-radius:99px;font-size:14px;color:#c6ebf2;background:#ffffff14;border:1px solid #ffffff2e;margin-bottom:16px}
+h1{font:800 clamp(38px,7vw,70px)/1.15 var(--serif);margin:0 0 14px}.lead{font-size:clamp(17px,2.2vw,21px);color:#d6eef3;max-width:30em;margin:0 0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:99px;min-height:46px;padding:10px 22px;background:var(--river);color:#fff;font-weight:700;text-decoration:none}
+.btn.y{background:var(--yel);color:#2b1c00}.btn.o{background:transparent;color:#fff;border:1.5px solid #ffffff80}.btn.s{background:#fff;color:var(--river);border:1.5px solid var(--river)}.btn:disabled{opacity:.6}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+.gw{text-align:center;justify-self:center}.gauge{position:relative;width:100px;height:250px;border:2px solid #ffffff66;border-radius:18px;overflow:hidden;background:#ffffff12}
+.water{position:absolute;inset:auto 0 0 0;height:var(--g,22%);background:linear-gradient(#4fd0d0,#0e7fa0 60%,#0a5870);transition:height 1.2s ease}
+.ticks{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 24px,#ffffff40 24px 25px)}
+.dl{position:absolute;left:0;right:0;bottom:65%;border-top:2px dashed var(--yel)}
+.gw b{display:block;margin-top:8px;font:700 22px var(--serif)}.gw small{color:#bfe0e8;font-size:13px}
+.waves{position:absolute;left:0;bottom:-1px;width:100%;height:80px;z-index:1}.waves svg{position:absolute;bottom:0;width:200%;height:100%;animation:dr 14s linear infinite}.waves svg+svg{animation-duration:9s;animation-direction:reverse}
+@keyframes dr{to{transform:translateX(-50%)}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-52px;position:relative;z-index:3}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 8px 24px #07242f14}.stat b{display:block;font:700 26px var(--serif);color:var(--river);line-height:1.2}.stat span{font-size:14px;color:var(--mut)}
+section.s{padding:60px 0 8px}.k{color:var(--teal);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+h2{font:800 clamp(26px,4vw,38px)/1.3 var(--serif);margin:4px 0 8px;color:var(--deep)}.sub{color:var(--mut);max-width:44em;margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--river);border-radius:6px 22px 6px 22px;padding:22px;min-width:0}
+.card h3{font-size:19px;margin:0 0 6px;color:var(--deep)}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.mut{color:var(--mut)}.sm{font-size:14px}
+label{font-weight:600;display:block;margin:12px 0 4px}.row{display:flex;justify-content:space-between;gap:10px}.v{color:var(--river);font-weight:700}
+select,input[type=number],input[type=date]{width:100%;min-height:46px;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--river)}input[type=checkbox]{width:20px;height:20px;accent-color:var(--river);margin-top:4px;flex:none}
+.ck{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-weight:500;cursor:pointer}
+.wx{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.wx div{background:#0d5b7510;border-radius:12px;padding:10px;text-align:center}.wx b{display:block;font-size:20px;color:var(--river)}.wx span{font-size:12.5px;color:var(--mut)}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.days div{border:1px solid var(--line);border-radius:12px;padding:8px;text-align:center;font-size:14px;background:#fff}
+.bars{height:5px;border-radius:4px;background:#0d5b7522;margin-top:6px;overflow:hidden}.bars i{display:block;height:100%;background:var(--river)}
+.res{margin-top:14px;border-radius:16px;padding:16px 18px;border:2px solid var(--line);background:#fff}.res h3{margin:0 0 4px;font:800 22px var(--serif)}
+.res.l0{border-color:var(--ok);background:#eaf6ee}.res.l1{border-color:var(--yel);background:#fff7e3}.res.l2{border-color:var(--org);background:#fdeede}.res.l3{border-color:var(--red);background:#fbe9e6}
+.res ul{margin:8px 0 0;padding-left:20px}
+.chat{display:flex;flex-direction:column;gap:10px;max-height:360px;overflow:auto;padding:6px 2px}.b{max-width:88%;padding:10px 14px;border-radius:16px 16px 16px 4px;background:#e4eff0;white-space:pre-wrap}.b.u{align-self:flex-end;background:var(--river);color:#fff;border-radius:16px 16px 4px 16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chips button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:6px 14px;font-size:14.5px;color:var(--river);font-weight:600}.chips button:hover{border-color:var(--river)}
+.send{display:flex;gap:8px}.send input{flex:1;min-height:46px;padding:9px 14px;border:1.5px solid var(--line);border-radius:99px;background:#fff}
+.prog{height:10px;border-radius:6px;background:#0d5b7522;overflow:hidden;margin:6px 0 12px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--river));transition:width .4s}
+.step{font:700 12px var(--sans);color:var(--yel);letter-spacing:.1em}
+.em{display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}.em:hover{border-color:var(--red)}.em b{font:800 26px var(--serif);color:var(--red);min-width:72px}.em span{display:block;font-size:14px;color:var(--mut);line-height:1.4}
+.note{background:#f1e6cf;color:#5b3a00;border-radius:12px;padding:10px 14px;font-size:14.5px;font-weight:500;margin-top:14px}
+footer{margin-top:60px;background:var(--deep);color:#b6d3dc;padding:34px 0;font-size:14.5px}footer a{color:#e8f6fa}footer p{margin:6px 0}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.gw{justify-self:start;text-align:left}.gauge{height:150px;width:84px}.g2,.g3{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}nav a{padding:8px 10px}.hide-m{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+[hidden]{display:none!important}
+body{background:#f1f5ee radial-gradient(60% 40% at 90% 0,#d9ece6 0,transparent 70%) no-repeat}
+nav a.on{background:var(--deep);color:#fff}
+.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px #07242f14}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:56px 0 8px}
+.tile{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;position:relative;overflow:hidden;transition:.25s}
+.tile:hover{transform:translateY(-4px);border-color:var(--river);box-shadow:0 14px 30px #0d5b7522}
+.tile i{font-style:normal;display:grid;place-items:center;width:52px;height:52px;border-radius:16px;font-size:26px;background:linear-gradient(135deg,#d9ece6,#fbeccb);margin-bottom:10px}
+.tile b{display:block;font:700 18px var(--serif);color:var(--deep);line-height:1.3}.tile span{font-size:14px;color:var(--mut);line-height:1.5;display:block;margin-top:4px}
+.tile:after{content:"→";position:absolute;right:16px;bottom:12px;color:var(--river);font-weight:700;opacity:0;transition:.2s}.tile:hover:after{opacity:1}
+.hsc{position:absolute;left:0;bottom:62px;width:100%;height:150px;opacity:.16;z-index:1;pointer-events:none}
+.hgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.hc{background:var(--card);border:1px solid var(--line);border-radius:6px 24px 6px 24px;overflow:hidden;display:flex;flex-direction:column}
+.hc img{width:100%;height:210px;object-fit:cover;display:block;background:#cfe0dc}
+.hb{padding:18px 20px 20px}.hb h3{font:800 21px/1.35 var(--serif);margin:0 0 6px;color:var(--deep)}
+.yr{display:inline-block;background:var(--deep);color:#fff;border-radius:99px;padding:2px 14px;font:700 14px var(--sans);margin-bottom:8px}
+.hs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.hs div{background:#0d5b7510;border-radius:12px;padding:10px 12px}.hs b{display:block;font:800 22px var(--serif);color:var(--river);line-height:1.2}.hs span{font-size:12.5px;color:var(--mut);line-height:1.4;display:block}
+.src{font-size:13px;color:var(--mut);margin:8px 0 0}.hb a{font-weight:600}
+.tl{position:relative;margin:6px 0 28px;padding-left:22px;border-left:3px solid #0d5b7533}.tl div{position:relative;padding:4px 0 14px}.tl div:before{content:"";position:absolute;left:-30px;top:10px;width:13px;height:13px;border-radius:50%;background:var(--yel);border:3px solid var(--bg)}.tl b{color:var(--river)}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:6px 0 16px}.sum div{background:linear-gradient(135deg,#0d5b75,#07242f);color:#fff;border-radius:16px;padding:14px;text-align:center}.sum b{display:block;font:800 26px var(--serif)}.sum span{font-size:13px;color:#c6ebf2}
+table{width:100%;border-collapse:collapse;font-size:15.5px}th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-size:13px}td:nth-child(2){font-weight:700;color:var(--river);white-space:nowrap}
+.sp{border-left:5px solid var(--teal);background:#fff;border-radius:6px 16px 6px 16px;padding:14px 18px;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.sp h3{margin:0 0 4px;font-size:18px}.sp ul{margin:6px 0 0;padding-left:20px}.sp.w{border-left-color:var(--org)}
+@media(max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}.hgrid{grid-template-columns:1fr}.sum{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+<style>
+
+/* FloodGuard editorial redesign — overrides the prototype's old visual theme */
+:root{--bg:#f6f3eb;--card:#fffdf8;--ink:#20352c;--mut:#69786e;--line:#e1e1d5;--deep:#294d3b;--river:#315f49;--teal:#6b9474;--yel:#e5d99c;--org:#d56c45;--red:#a84235;--ok:#2f7955;--serif:"Noto Serif Bengali",Georgia,serif;--sans:"Hind Siliguri",system-ui,sans-serif}
+html{scroll-padding-top:110px}body{background:var(--bg);color:var(--ink);font-size:17px;line-height:1.75}header{background:#f6f3ebf0;border-bottom:1px solid var(--line);box-shadow:0 4px 24px #20352c08}header .wrap{max-width:1220px;min-height:76px;padding:10px 22px;gap:18px}.logo{font:800 22px var(--serif);letter-spacing:-.5px;color:var(--deep)}.logo span{color:var(--org)}nav{gap:3px}nav a{font-size:14px;padding:10px 12px;color:#647368}nav a.on{background:var(--deep);color:#fff}nav a:hover{background:#e6eadf;color:var(--deep)}.call{background:var(--org);padding:9px 17px;box-shadow:0 5px 14px #d56c4526}.sos{background:#f0dfd3;color:#7d3f2d;padding:9px 12px;font-size:14px}.sos a{color:#7d3f2d}
+.wrap{max-width:1220px;padding-left:22px;padding-right:22px}.editorial-hero{isolation:isolate;min-height:560px;position:relative;display:flex;align-items:center;padding:0;overflow:hidden;background:#294d3b;color:#fff}.hero-photo,.hero-shade{position:absolute;inset:0;z-index:-2}.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 48%;filter:saturate(.8)}.hero-shade{z-index:-1;background:linear-gradient(90deg,#142f25ed 0%,#1d3b2fcf 44%,#1d3b2f30 100%)}.editorial-hero .wrap.hero-content{width:100%;display:grid;grid-template-columns:1fr .7fr;align-items:end;gap:28px;padding-top:68px;padding-bottom:80px;min-height:560px}.hero-copy{max-width:690px}.tag{background:#ffffff1c;border:1px solid #ffffff50;color:#f8f4e7;border-radius:99px;padding:6px 15px;letter-spacing:.4px}.editorial-hero h1{font:800 clamp(43px,6vw,76px)/1.2 var(--serif);letter-spacing:-1.2px;margin:24px 0 16px;color:#fff}.editorial-hero h1 em{font-style:normal;color:#e4e9b9}.lead{font-size:clamp(17px,2vw,21px);max-width:620px;color:#e5eee6;line-height:1.8}.acts{gap:12px;margin-top:24px}.btn{border-radius:999px;padding:13px 21px;font-weight:700;transition:transform .2s,filter .2s}.btn.y{background:#e1e8a9;color:#20352c}.btn.o{background:#fffdf8;color:#294d3b;border:1px solid #fffdf8}.btn:hover{transform:translateY(-2px);filter:brightness(1.04)}.hero-note{font-size:13px;color:#d7e2d7;margin-top:19px}.hero-side{display:flex;justify-content:flex-end}.hero-note-card{display:flex;gap:13px;align-items:flex-start;max-width:330px;padding:19px 21px;background:#fffdf8ed;color:var(--deep);border-radius:18px;box-shadow:0 18px 50px #152d221f}.hero-note-card b{display:block;font:700 19px var(--serif)}.hero-note-card span:not(.hero-dot){display:block;color:var(--mut);font-size:14px;line-height:1.55;margin-top:4px}.hero-dot{display:block;flex:0 0 12px;height:12px;border-radius:50%;background:var(--org);margin-top:7px}
+.stats{max-width:1176px;margin:-34px auto 0;padding:0 22px;grid-template-columns:repeat(4,1fr);gap:12px}.stat{border-radius:16px;background:#fffdf8;border:1px solid var(--line);padding:20px 18px;box-shadow:0 12px 32px #20352c0b}.stat b{font:700 25px var(--serif);color:var(--deep)}.stat span{font-size:14px;color:var(--mut)}.tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:48px 0 14px}.tile{border:1px solid var(--line);border-radius:17px;background:#fffdf8;padding:20px;min-height:155px;box-shadow:none;transition:transform .2s,box-shadow .2s}.tile:hover{transform:translateY(-4px);box-shadow:0 14px 35px #20352c0e}.tile b{color:var(--deep)}
+section.s{padding:54px 0 10px;min-height:56vh}section.s h2{font:800 clamp(30px,4vw,46px)/1.3 var(--serif);letter-spacing:-.7px;color:var(--deep);max-width:880px;margin:10px 0 12px}.k{color:#537b5e;font-size:12px;letter-spacing:1.7px;text-transform:uppercase}.sub{max-width:820px;color:var(--mut);font-size:18px;line-height:1.8;margin-bottom:26px}.card{background:#fffdf8;border:1px solid var(--line);border-top:0;border-radius:18px;padding:24px;box-shadow:0 7px 28px #20352c05}.card:hover{transform:translateY(-2px);box-shadow:0 12px 30px #20352c0b}.card h3{font:700 21px/1.45 var(--serif);color:var(--deep)}.g2,.g3{gap:18px}.mut{color:var(--mut)}.note{border-left:4px solid #d9b760;background:#f1ebd8;color:#66552c;border-radius:0 13px 13px 0;padding:15px 18px;margin:18px 0}.em{border-radius:18px;background:#fffdf8;border:1px solid var(--line);padding:20px}.em b{color:var(--org)}
+.hgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:26px}.hc{border-radius:18px;background:#fffdf8;border:1px solid var(--line);box-shadow:0 8px 28px #20352c06;transition:transform .2s,box-shadow .2s}.hc:hover{transform:translateY(-3px);box-shadow:0 16px 38px #20352c0e}.hc img{height:260px;object-fit:cover}.hb{padding:23px}.hb h3{font:800 24px/1.4 var(--serif);color:var(--deep);margin:12px 0 8px}.yr{background:#e7ecdc;color:var(--deep);font-size:13px;padding:5px 13px}.hs{gap:10px;margin:17px 0}.hs div{background:#f0f1e7;border:1px solid #e5e6d9;border-radius:12px;padding:13px}.hs b{font:700 19px var(--serif);color:var(--deep)}.hs span{font-size:12px;color:var(--mut)}.hb a{font-weight:700;text-decoration:none;color:var(--river)}.hb a:hover{text-decoration:underline}.src{font-size:12px;color:var(--mut);margin-top:10px}.tl{border-left-color:#cbd7c1}.tl div:before{background:var(--org);border-color:var(--bg)}.tl b{color:var(--deep)}
+.sum{gap:10px;margin:10px 0 18px}.sum div{background:var(--deep);border-radius:14px;padding:16px 13px;box-shadow:none}.sum div b{font:700 24px var(--serif)}.sum div span{font-size:12px}.food-intro{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.food-intro div{display:flex;align-items:center;gap:12px;background:#e9eddf;border:1px solid #dce3d2;padding:14px 16px;border-radius:14px}.food-intro b{font:700 15px "DM Sans",sans-serif;color:var(--org)}.food-intro span{font-weight:600;font-size:14px;color:var(--deep)}.food-form-card{background:#fffdf8}.food-output{min-width:0}.food-table-card{overflow:hidden}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;min-width:400px;font-size:14px}th{background:#eef0e5;color:var(--deep);text-align:left;font-weight:700}td,th{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}tbody tr:hover{background:#faf8f1}.food-special{margin-top:38px}.food-special>h3{font:800 29px var(--serif);color:var(--deep);margin:7px 0}.food-special>p{color:var(--mut);max-width:700px}.special-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.special-grid .sp{border:1px solid var(--line);background:#fffdf8;border-radius:16px;padding:19px 21px}.special-grid .sp h3{font:700 20px var(--serif);color:var(--deep);margin:0 0 10px}.special-grid .sp ul{margin:0;padding-left:20px}.special-grid .sp li{margin:5px 0;color:#56675b}.special-grid .sp.w{border-color:#e9c4b2;background:#fbf0e9}.food-note{margin-top:25px}
+#risk .card,#prepare .card,#assistant .card,#after .card,#ml .card{border-radius:18px}.result,.res{border-radius:16px}.sos a{text-decoration:none}footer{padding:30px 22px;color:var(--mut);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:980px){header .wrap{flex-wrap:wrap;gap:8px;padding:12px 16px}.logo{font-size:20px}nav{order:3;width:100%;flex-basis:100%;padding-bottom:3px}.editorial-hero .wrap.hero-content{grid-template-columns:1fr .45fr}.hero-note-card{max-width:270px}.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:repeat(2,1fr)}.sum{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){body{font-size:16px}.wrap{padding-left:15px;padding-right:15px}.sos{font-size:13px}.call{padding:7px 12px}.editorial-hero,.editorial-hero .wrap.hero-content{min-height:540px}.editorial-hero .wrap.hero-content{grid-template-columns:1fr;padding-top:48px;padding-bottom:60px}.hero-shade{background:linear-gradient(90deg,#142f25ed 0%,#1d3b2fbd 72%,#1d3b2f73 100%)}.hero-side{justify-content:flex-start}.hero-note-card{max-width:100%;padding:14px 16px}.editorial-hero h1{font-size:clamp(39px,12vw,54px)}.acts{align-items:stretch}.acts .btn{font-size:14px;padding:12px 15px}.stats{padding:0 15px;margin-top:-20px;gap:8px}.stat{padding:14px}.stat b{font-size:21px}.stat span{font-size:12px}.tiles{gap:9px;margin-top:30px}.tile{padding:15px;min-height:145px}.tile b{font-size:16px}.tile span{font-size:13px}section.s{padding-top:38px}.sub{font-size:16px}.g2,.g3,.hgrid,.special-grid{grid-template-columns:1fr}.card{padding:18px}.hc img{height:215px}.hb{padding:18px}.hb h3{font-size:21px}.food-intro{grid-template-columns:1fr;gap:8px}.food-intro div{padding:12px}.sum{grid-template-columns:repeat(2,minmax(0,1fr))}.table-scroll{margin:0 -6px}.hs{grid-template-columns:1fr 1fr}.hero-note{font-size:12px}}
+
+
+</style>
+<style>
+/* FloodGuard polish layer: only visual refinements, no markup or script changes */
+:root{--shadow:0 1px 2px #20352c0f,0 12px 30px -14px #20352c2e}
+body{text-rendering:optimizeLegibility}
+h1,h2,h3,.logo,.stat b,.hs b,.hb h3,.em b{letter-spacing:0!important}
+.editorial-hero h1,section.s h2{line-height:1.32;text-wrap:balance}
+.k{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:0;text-transform:none;color:var(--river)}
+.k:before{content:"";width:22px;height:3px;border-radius:3px;background:var(--org)}
+header{backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px)}
+nav a{white-space:nowrap}
+.editorial-hero:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:44px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 44' preserveAspectRatio='none'%3E%3Cpath fill='%23f6f3eb' d='M0 22c120 20 240 20 360 0s240-20 360 0 240 20 360 0 240-20 360 0v22H0z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.stats{position:relative;z-index:2}
+.stat,.tile,.card,.hc,.em{box-shadow:var(--shadow)}
+.tiles{margin-top:56px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-decoration:none;color:var(--ink)}
+.tile i{display:grid;place-items:center;width:44px;height:44px;margin-bottom:10px;border-radius:12px;background:#e9eddf;font-style:normal;font-size:22px}
+.tile span{color:var(--mut);font-size:14px;line-height:1.55}
+section.s{min-height:0;padding:56px 0 8px}
+section.s+section.s{margin-top:40px;border-top:1px solid var(--line)}
+.card{border-top:1px solid var(--line);border-radius:16px}
+.card:hover{transform:none;box-shadow:var(--shadow)}
+.card h3{margin-top:0}
+select,#ms,#md,#q{width:100%;min-height:46px;padding:10px 14px;border:1px solid #cdd3c4;border-radius:12px;background:#fff;color:var(--ink);font:inherit}
+.send{display:flex;gap:10px}.send #q{flex:1;width:auto;min-width:0}
+select:focus,#ms:focus,#md:focus,#q:focus{outline:none;border-color:var(--river);box-shadow:0 0 0 3px #315f4933}
+input[type=range],input[type=checkbox]{accent-color:var(--river)}
+.btn{min-height:46px;cursor:pointer}
+.ck{display:flex;align-items:center;gap:10px;margin:8px 0;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;transition:background .15s,border-color .15s}
+.ck:hover{border-color:var(--teal)}
+.ck:has(input:checked){background:#e9eddf;border-color:var(--teal)}
+.prog{height:10px;border-radius:99px;background:#e4e8da;overflow:hidden}
+.prog i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--river));transition:width .4s}
+.em{display:flex;align-items:center;gap:18px;color:inherit;text-decoration:none;transition:border-color .2s}
+.em:hover{border-color:var(--org)}
+.em b{min-width:92px;font:800 32px var(--serif)}
+.em span{display:block;color:var(--mut);font-size:14px}
+footer{margin-top:72px;padding:40px 22px;background:var(--deep);color:#c9d6cb;border-top:0}
+footer a{color:#e1e8a9}footer b,footer strong{color:#fff}
+:focus-visible{outline:3px solid var(--river);outline-offset:2px}
+@media(max-width:980px){nav{overflow-x:auto;scrollbar-width:none}}
+@media(max-width:650px){section.s{padding-top:40px}.em b{font-size:26px;min-width:76px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+<style>
+/* Interactive Phitron-inspired feature switcher, original site styling retained */
+.home-spotlight{padding:64px 0 24px}.spot-heading{text-align:center;margin-bottom:30px}.spot-heading .sub{margin:0 auto}.spot-heading h2{font:800 clamp(28px,4vw,43px)/1.35 var(--serif);color:var(--deep);margin:8px 0 12px}.spot-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}.spot-choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spot-choice{font-family:var(--sans);display:flex;align-items:flex-start;text-align:left;gap:12px;position:relative;border:1px solid var(--line);border-radius:22px;background:var(--card);padding:20px 16px;color:var(--ink);min-height:140px;transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}.spot-choice:hover,.spot-choice:focus-visible{transform:translateY(-3px);box-shadow:0 15px 35px #20352c18;border-color:#72b79b}.spot-choice.active{background:#fff7ef;border-color:#e6a56c;box-shadow:0 12px 32px #a65e2714}.spot-icon{display:grid;place-items:center;background:#e9eddf;border-radius:15px;width:48px;height:48px;flex:none;font-size:24px}.spot-choice.active .spot-icon{background:#ffe6d0}.spot-choice b{display:block;font:700 18px/1.4 var(--serif);margin:3px 0 7px}.spot-choice small{display:block;font:400 13px/1.6 var(--sans);color:var(--mut)}.spot-arrow{position:absolute;right:14px;bottom:11px;color:var(--river)}.spot-feature{background:linear-gradient(145deg,#0fc699,#0b9679 55%,#0d735e);color:#fff;border-radius:35px;padding:32px;min-height:500px;display:flex;flex-direction:column;overflow:hidden;position:relative;box-shadow:0 20px 48px #0c8d7430}.spot-feature:before{content:"";position:absolute;width:330px;height:330px;border:1px solid #ffffff25;border-radius:50%;right:-100px;top:55px;box-shadow:0 0 0 55px #ffffff0b,0 0 0 115px #ffffff08;pointer-events:none}.spot-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}.spot-check{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:#fff;color:#0cae87;font-size:30px;font-weight:800}.spot-count{font-weight:700;color:#e0fff3}.spot-visual{font-size:88px;line-height:1;text-align:center;margin:auto 0;filter:drop-shadow(0 12px 15px #004b3b35);transition:transform .25s}.spot-content{position:relative;z-index:1}.spot-eyebrow{font-size:12px;letter-spacing:1px;font-weight:700;color:#caffeb}.spot-content h3{font:800 clamp(27px,3vw,39px)/1.35 var(--serif);margin:12px 0}.spot-content p{font-size:18px;line-height:1.7;margin:0 0 24px;color:#e9fff7}.spot-cta{display:inline-flex;gap:28px;align-items:center;justify-content:space-between;text-decoration:none;border-radius:99px;padding:12px 20px;background:#fff;color:#096b58;font-weight:700}.spot-cta:hover{background:#e8fff5}.spot-feature.switching .spot-visual{transform:scale(.88)}@media(max-width:980px){.spot-layout{grid-template-columns:1fr}.spot-feature{min-height:350px}.spot-visual{font-size:66px}}@media(max-width:600px){.home-spotlight{padding:40px 0}.spot-choices{grid-template-columns:1fr 1fr;gap:9px}.spot-choice{padding:14px 12px;min-height:150px;display:block;border-radius:17px}.spot-icon{width:40px;height:40px;font-size:20px;margin-bottom:8px}.spot-choice b{font-size:15px}.spot-choice small{font-size:12px}.spot-feature{padding:25px;border-radius:25px;min-height:350px}.spot-content h3{font-size:29px}.spot-content p{font-size:16px}.spot-visual{font-size:60px}}@media(prefers-reduced-motion:reduce){.spot-choice,.spot-visual{transition:none}}
+</style>
+<style>
+/* Interactive service chooser and detail redesign */
+.risk-intro{text-align:center;max-width:700px;margin:0 auto 24px}.risk-intro h3{font:800 clamp(24px,3vw,34px)/1.4 var(--serif);margin:8px 0}.risk-intro p{color:var(--mut);margin:0}.risk-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:26px 0}.risk-option{display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:28px;min-height:280px;border:1px solid var(--line);border-radius:24px;background:#fffdf8;color:var(--ink);box-shadow:var(--shadow);transition:.25s}.risk-option:hover,.risk-option:focus-visible{transform:translateY(-5px);border-color:var(--teal);box-shadow:0 22px 45px #20352c17}.risk-symbol{display:grid;place-items:center;width:65px;height:65px;border-radius:19px;background:#e8eee1;font-size:31px;margin-bottom:15px}.risk-option:nth-child(2) .risk-symbol{background:#f5e7d9}.risk-type{font-size:13px;color:var(--teal);font-weight:700}.risk-option strong{font:800 25px var(--serif);margin:6px 0}.risk-option small{font-size:15px;color:var(--mut);line-height:1.7}.risk-go{margin-top:auto;padding-top:20px;color:var(--river);font-weight:700}.risk-panels{max-width:940px;margin:auto}.risk-panel>.card{padding:28px}.back-choice{border:0;background:#e7eee3;color:var(--deep);padding:10px 18px;border-radius:99px;font-weight:700;margin-bottom:18px}.back-choice:hover{background:#d5e3d1}.risk-panel .wx{gap:12px;margin-top:22px}.risk-panel .wx div{padding:18px 8px}.risk-panel .days{margin-top:16px}.risk-panel .res{margin-top:18px}.chat-shell{padding:0!important;overflow:hidden;max-width:900px;margin:auto}.chat-head{display:flex;align-items:center;gap:13px;background:var(--deep);color:white;padding:19px 23px}.chat-avatar{display:grid;place-items:center;background:#ffffff22;border-radius:15px;width:49px;height:49px;font-size:25px}.chat-head strong{display:block;font-size:18px}.chat-head small{display:block;font-size:12px;color:#d6e6d8}.chat-emergency{margin-left:auto;border-radius:99px;background:#fff;color:#a84235;text-decoration:none;padding:8px 14px;font-weight:800}.chat-shell .chat{padding:25px;min-height:250px;max-height:460px;background:linear-gradient(135deg,#f8faf5,#eef3e9)}.chat-shell .b{box-shadow:0 3px 10px #20352c0c;line-height:1.7}.chat-shell .chips{padding:0 22px;margin-bottom:16px}.chat-shell .send{padding:15px 22px 22px;border-top:1px solid var(--line)}.quick-label{margin:16px 22px 0;font-weight:700;font-size:14px;color:var(--mut)}.after-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}.after-card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;align-self:start}.after-card[open]{border-color:var(--teal)}.after-card summary{list-style:none;cursor:pointer;padding:23px;display:flex;flex-direction:column;align-items:flex-start;gap:7px}.after-card summary::-webkit-details-marker{display:none}.after-emoji{display:grid;place-items:center;background:#e9eddf;width:54px;height:54px;border-radius:15px;font-size:27px;margin-bottom:5px}.after-card summary strong{font:800 21px var(--serif);color:var(--deep)}.after-card summary>span:not(.after-emoji){font-size:14px;color:var(--mut)}.after-card summary b{font-size:14px;color:var(--river);margin-top:8px}.after-card[open] summary b{color:var(--org)}.after-details{padding:0 24px 22px;border-top:1px solid var(--line);font-size:15px}.after-details ul{padding-left:23px}.after-details li{margin:10px 0}.after-details p{margin:12px 0}@media(max-width:700px){.risk-options,.after-grid{grid-template-columns:1fr}.risk-option{min-height:240px;padding:22px}.risk-panel>.card{padding:18px}.chat-head{padding:14px}.chat-shell .chat{padding:16px}.chat-shell .send{padding:12px}.chat-shell .chips{padding:0 12px}.chat-emergency{padding:7px 9px}}
+</style><style>
+/* FloodGuard immersive risk experience */
+#risk{--risk-a:#0c6857;--risk-b:#103c35}#risk>.k,#risk>h2{position:relative}#risk .risk-chooser{margin-top:24px}.risk-showcase{display:grid;grid-template-columns:1.35fr .65fr;gap:20px;min-height:310px;padding:38px 42px;overflow:hidden;position:relative;border-radius:30px;background:radial-gradient(circle at 80% 20%,#2b907b 0%,transparent 40%),linear-gradient(125deg,#123b35,#0a6757);color:#fff;box-shadow:0 22px 50px #0a564326}.risk-pill{display:inline-block;padding:6px 13px;border:1px solid #ffffff50;border-radius:40px;background:#ffffff15;font-size:12px;letter-spacing:1px}.risk-showcase h3{font:800 clamp(29px,4vw,47px)/1.35 var(--serif);margin:18px 0 12px;color:white}.risk-showcase h3 em{font-style:normal;color:#d6f6c0}.risk-showcase p{max-width:570px;color:#d8eee6;font-size:16px;margin:0}.risk-mini-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.risk-mini-tags span{font-size:12px;padding:5px 10px;border-radius:50px;background:#ffffff17}.risk-showcase-art{position:relative;min-height:245px;display:grid;place-items:center}.risk-orbit{position:absolute;width:240px;height:240px;border:1px dashed #ffffff60;border-radius:50%;animation:risk-spin 30s linear infinite}.orbit-two{width:185px;height:185px;border-style:solid;opacity:.5;animation-direction:reverse}.risk-art-center{z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;width:132px;height:132px;border-radius:50%;font-size:64px;background:#ffffff20;box-shadow:0 0 0 15px #ffffff0c}.risk-art-center small{font:700 9px sans-serif;letter-spacing:1px;color:#e2f6e7}.risk-art-float{position:absolute;z-index:2;background:#fff;color:#123b35;border-radius:16px;padding:9px;font-size:24px;box-shadow:0 10px 24px #082c2355}.risk-art-a{top:12%;left:5%}.risk-art-b{right:4%;bottom:10%}@keyframes risk-spin{to{transform:rotate(360deg)}}
+#risk .risk-options{gap:18px;margin:20px 0 10px}#risk .risk-option{position:relative;isolation:isolate;overflow:hidden;min-height:310px;padding:28px;border:1px solid #dce7dc;border-radius:25px;background:linear-gradient(145deg,#fff,#edf8f1)}#risk .risk-option:nth-child(2){background:linear-gradient(145deg,#fff,#fff1e7)}#risk .risk-option:before{content:'';position:absolute;right:-65px;top:-65px;width:200px;height:200px;border-radius:50%;background:#8fc8a323;z-index:-1;transition:transform .3s}#risk .risk-option:hover:before{transform:scale(1.6)}.risk-option-number{position:absolute;right:23px;top:24px;font:700 12px sans-serif;color:#77998c;letter-spacing:2px}#risk .risk-symbol{width:70px;height:70px;font-size:36px;border-radius:20px}#risk .risk-option strong{font-size:clamp(23px,2.5vw,30px)}#risk .risk-go{display:inline-flex;align-items:center;margin-top:auto;font-weight:800;color:#0d6a57}#risk .risk-panel{max-width:100%}#risk .risk-panels{max-width:1060px}#risk .risk-panel>.card{padding:clamp(18px,3vw,36px);border-radius:26px;background:linear-gradient(160deg,#fffdf8,#f8fbf6)}.risk-panel-heading{margin-bottom:22px}.risk-panel-heading h3{font:800 clamp(24px,3vw,36px)/1.4 var(--serif)!important;margin:8px 0!important}.risk-panel-heading p{color:var(--mut);margin:0}.risk-panel-eyebrow{font:800 12px sans-serif;letter-spacing:1.6px;color:#27856d}.weather-scene{position:relative;height:210px;overflow:hidden;border-radius:22px;margin:0 0 25px;background:linear-gradient(155deg,#bde9ed,#65b7c9 70%,#2c8ca8)}.weather-scene-sun{position:absolute;left:15%;top:18%;font-size:67px;filter:drop-shadow(0 6px 10px #ffce7d77)}.weather-scene-cloud{position:absolute;right:16%;top:14%;font-size:90px;animation:risk-float 5s ease-in-out infinite}.weather-scene-rain{position:absolute;right:18%;top:62%;color:#e9fbff;font-size:33px;letter-spacing:9px}.weather-scene-caption{position:absolute;left:25px;bottom:18px;font:700 11px sans-serif;letter-spacing:1.5px;color:#15546b}.weather-scene-caption b{display:block;font:800 24px var(--serif);letter-spacing:0}@keyframes risk-float{50%{transform:translateY(-12px)}}#risk .wx{grid-template-columns:repeat(4,minmax(0,1fr))}#risk .wx div{background:#e9f3ef;border:1px solid #d5e8df;border-radius:17px;padding:19px 8px}#risk .wx b{font-size:clamp(18px,2.5vw,28px);color:#176854}#risk .days div{background:#fff;border-radius:16px;padding:15px 8px}.risk-source-strip{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;padding:14px 16px;border-radius:14px;background:#e9f1e9;font-size:13px}.risk-source-strip a{font-weight:700}.risk-progress-label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#59776a}.risk-progress-track{height:8px;background:#e3ece4;border-radius:99px;overflow:hidden;margin:8px 0 22px}.risk-progress-track i{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#6ebd98,#1d8569);transition:width .3s}.risk-live-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-bottom:24px}.risk-live-graphic{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:235px;border-radius:20px;background:linear-gradient(135deg,#0c574c,#123c37);color:#fff;text-align:center;padding:18px}.risk-live-rings{display:grid;place-items:center;width:115px;height:115px;margin-bottom:12px;border:2px solid #8cdbb3;border-radius:50%;box-shadow:0 0 0 12px #ffffff10,0 0 0 24px #ffffff08;font-size:44px}.risk-live-graphic strong{font:800 20px var(--serif)}.risk-live-graphic small{font-size:12px;color:#d0e8df}.risk-live-explainer{padding:23px;background:#f0f4e9;border-radius:20px;display:flex;flex-direction:column;justify-content:center}.risk-live-explainer b{font:800 21px var(--serif)}.risk-live-explainer p{color:#587064}.risk-live-explainer span{font-size:13px;color:#986c36}.risk-result-heading{margin:20px 0 8px}.risk-result-heading span{display:block;color:#27856d;font:700 11px sans-serif;letter-spacing:1.2px}.risk-result-heading strong{font:800 23px var(--serif)}#risk #calc{width:100%;justify-content:center;margin-top:15px;background:#0c6b56}#risk .res{padding:24px;border-radius:20px}@media(max-width:750px){.risk-showcase{grid-template-columns:1fr;padding:27px 23px}.risk-showcase-art{min-height:190px}.risk-orbit{width:175px;height:175px}.orbit-two{width:135px;height:135px}.risk-art-center{width:105px;height:105px;font-size:47px}.risk-live-layout{grid-template-columns:1fr}#risk .wx{grid-template-columns:repeat(2,minmax(0,1fr))}.weather-scene{height:170px}}@media(prefers-reduced-motion:reduce){.risk-orbit,.weather-scene-cloud{animation:none}}
+</style><style>
+/* Premium section experience v2 — home selection deliberately untouched */
+:root{--premium-shadow:0 22px 65px -35px #183c32a3}
+section.s:not(#risk){position:relative;isolation:isolate}
+section.s:not(#risk)>.k{display:inline-flex;background:#e7eee5;border:1px solid #d5e2d4;border-radius:99px;padding:7px 15px;color:#37684f}
+section.s:not(#risk)>h2{font-size:clamp(32px,4.4vw,53px);max-width:900px;line-height:1.3}
+section.s:not(#risk)>.sub{font-size:17px}
+.section-experience{display:grid;grid-template-columns:1.4fr .65fr;gap:22px;align-items:center;position:relative;overflow:hidden;padding:30px 34px;margin:25px 0 28px;border-radius:28px;color:#fff;background:radial-gradient(circle at 92% 12%,#4e9b8b 0,transparent 34%),linear-gradient(125deg,#173d35,#126e5d 65%,#0a836f);box-shadow:var(--premium-shadow)}
+.section-experience:before{content:'';position:absolute;width:280px;height:280px;border:1px solid #ffffff3c;border-radius:50%;right:-65px;top:-130px;box-shadow:0 0 0 34px #ffffff0a,0 0 0 75px #ffffff08;pointer-events:none}
+.section-experience h3{font:800 clamp(24px,3vw,35px)/1.35 var(--serif);margin:8px 0 10px;color:#fff}
+.section-experience p{margin:0;color:#e0f4ed;max-width:640px;font-size:15px}
+.section-experience .eyebrow{font:700 12px var(--sans);letter-spacing:.13em;color:#d5ffde}
+.section-experience .experience-icon{justify-self:center;display:grid;place-items:center;width:126px;height:126px;border-radius:35px;background:#ffffff24;border:1px solid #ffffff59;font-size:66px;box-shadow:0 16px 35px #052b2459;transform:rotate(-7deg);transition:transform .35s}
+.section-experience:hover .experience-icon{transform:rotate(4deg) translateY(-6px)}
+.section-experience .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.section-experience .pills span{border:1px solid #ffffff50;background:#ffffff19;border-radius:99px;padding:5px 11px;font-size:12px}
+#prepare .g3 .card,#after .after-card,#emergency .em{transition:transform .24s,box-shadow .24s,border-color .24s}
+#prepare .g3 .card{min-height:210px;position:relative;overflow:hidden;background:linear-gradient(155deg,#fffefa,#eaf3eb);border:1px solid #d9e6d9}
+#prepare .g3 .card:before{content:'✦';position:absolute;right:18px;top:10px;font-size:45px;color:#cbded0}
+#prepare .g3 .card:hover,#after .after-card:hover,#emergency .em:hover{transform:translateY(-4px);box-shadow:var(--premium-shadow)}
+#prepare .step{display:inline-block;background:#dbece0;color:#326e53;border-radius:99px;padding:6px 12px;margin-bottom:12px}
+#prepare #cl{gap:11px}#prepare #cl .ck{border-radius:14px;box-shadow:0 4px 14px #244b3010}
+#supplies .food-intro div{border-radius:18px;background:linear-gradient(135deg,#e7f0e7,#f5f1df);min-height:85px;box-shadow:0 8px 24px #1a493015}
+#supplies .food-intro b{display:grid;place-items:center;min-width:40px;height:40px;border-radius:12px;background:#fff;color:#22775d}
+#supplies .food-form-card,#supplies .food-table-card{border-radius:24px;box-shadow:var(--premium-shadow)}
+#supplies .sum div{background:linear-gradient(135deg,#1d775f,#153d35);border-radius:17px}
+#supplies .special-grid .sp{border-radius:20px;box-shadow:0 8px 24px #123e2810}
+#history .tl{background:#fdfcf7;border-radius:20px;padding:20px 24px 12px 36px;border:1px solid #e0e8db;border-left:4px solid #358567}
+#history .hc{border-radius:24px;overflow:hidden}#history .hc img{transition:transform .45s}#history .hc:hover img{transform:scale(1.045)}
+#ml>.card{max-width:900px;border-radius:26px;background:linear-gradient(135deg,#fffdf8,#eaf3ed);box-shadow:var(--premium-shadow);padding:32px}
+#emergency .em{border-radius:21px;background:linear-gradient(135deg,#fffdf8,#f8eee7);border:1px solid #eadbd2}
+#emergency .em b{color:#b24a39}
+#assistant .chat-shell{border-radius:26px;box-shadow:var(--premium-shadow);overflow:hidden}
+#assistant .chat-head{background:linear-gradient(110deg,#1c5948,#13846b);color:#fff;padding:17px 20px;border-radius:18px}
+#assistant .chat-head strong,#assistant .chat-head small{color:#fff}
+#assistant .chat{min-height:270px;max-height:450px;padding:18px 10px}
+#assistant .chips button{transition:transform .2s,background .2s}#assistant .chips button:hover{transform:translateY(-2px);background:#e5f1e9}
+@media(max-width:700px){.section-experience{grid-template-columns:1fr;padding:24px;border-radius:21px}.section-experience .experience-icon{position:absolute;right:14px;top:16px;width:60px;height:60px;font-size:34px;border-radius:18px;opacity:.65}.section-experience h3{padding-right:36px}#ml>.card{padding:19px}}
+@media(prefers-reduced-motion:reduce){.section-experience .experience-icon,#history .hc img{transition:none}}
+</style><style>
+/* Newsroom only: existing home selector and other sections remain untouched */
+.news-banner{background:linear-gradient(120deg,#103b3c,#146858 65%,#1b9779);color:white;border-radius:28px;padding:35px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;overflow:hidden;position:relative;margin:20px 0 25px}.news-banner h3{font:800 clamp(27px,4vw,42px)/1.4 var(--serif);margin:13px 0}.news-banner h3 em{font-style:normal;color:#d9f7bb}.news-banner p{max-width:600px;color:#d5eee7;margin:0}.news-live{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff50;border-radius:30px;padding:5px 13px;font-size:13px}.news-live i{height:9px;width:9px;background:#a8f3b2;border-radius:50%;box-shadow:0 0 0 5px #a8f3b230}.news-art{font-size:95px;line-height:1;transform:rotate(-10deg);filter:drop-shadow(0 14px 20px #0003)}.news-art span{display:block;font:800 13px system-ui;letter-spacing:3px;text-align:center;margin-top:10px}.news-stage,.news-reader{background:#fffdf8;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow)}.news-stage-head,.news-toolbar,.news-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.news-stage h3{font:800 25px var(--serif);margin:8px 0 18px}.news-publishers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.news-publisher{border:1px solid #dfe8dd;background:linear-gradient(145deg,#fff,#f5f8f0);padding:19px;text-align:left;border-radius:17px;cursor:pointer;min-height:155px;transition:.2s;color:var(--deep)}.news-publisher:hover,.news-publisher:focus-visible{transform:translateY(-4px);border-color:#39917b;box-shadow:0 13px 26px #0b503c16}.news-publisher .np-icon{display:grid;place-items:center;width:45px;height:45px;background:#e3f1e8;border-radius:13px;font-size:23px;margin-bottom:11px}.news-publisher strong{display:block;font-size:17px;line-height:1.3}.news-publisher small{display:block;color:var(--mut);margin-top:6px}.news-minibtn{border:1px solid #cbdcd1;background:#f0f6f0;border-radius:50px;color:#245a49;text-decoration:none;padding:9px 16px;font:700 14px var(--sans);cursor:pointer}.news-minibtn:hover{background:#dff0e5}.news-toolbar{padding-bottom:18px;border-bottom:1px solid var(--line)}.news-current{font-weight:800;font-size:21px;color:var(--deep)}.news-filter{display:grid;grid-template-columns:1fr 1.3fr auto;gap:14px;align-items:end;margin:18px 0}.news-filter label{margin:0 0 5px}.news-filter select,.news-filter input{width:100%;min-height:48px;border:1px solid #cdd8ce;border-radius:12px;padding:10px 14px;background:#fff;font:inherit}.news-status{font-size:14px;color:var(--mut);margin:12px 0}.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.news-item{border:1px solid #e0e8df;border-radius:18px;background:#fff;padding:21px;display:flex;flex-direction:column;min-height:210px;transition:.2s}.news-item:hover{box-shadow:0 12px 28px #183f3020;transform:translateY(-3px)}.news-item .meta{font-size:12px;color:#59806c;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}.news-item h4{font:700 18px/1.55 var(--serif);margin:0 0 12px;color:var(--deep)}.news-item a{margin-top:auto;text-decoration:none;font-weight:700}.news-bottom{margin-top:18px}.news-bottom>a{font-weight:700}.news-empty{grid-column:1/-1;padding:30px;background:#f3f7f2;border-radius:15px;color:var(--mut);text-align:center}.news-empty a{display:inline-block;margin:8px}.news-reader[hidden],.news-stage[hidden]{display:none!important}@media(max-width:900px){.news-publishers{grid-template-columns:repeat(3,1fr)}.news-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.news-banner{padding:25px 20px}.news-art{display:none}.news-stage,.news-reader{padding:17px}.news-publishers,.news-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.news-publisher{padding:14px;min-height:145px}.news-filter{grid-template-columns:1fr}.news-filter .btn{width:100%;justify-content:center}.news-item{padding:15px;min-height:190px}.news-item h4{font-size:16px}}@media(max-width:390px){.news-publishers,.news-grid{grid-template-columns:1fr}}
+</style><style>
+/* Simple, direct-to-publisher newsroom */
+.news-simple-tools{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:4px 0 24px}
+.news-simple-tools label{margin:0;flex:1 1 270px;max-width:480px;color:var(--deep);font-weight:700}
+.news-simple-tools input{display:block;width:100%;min-height:48px;margin-top:7px;border:1px solid #cdd8ce;border-radius:13px;padding:10px 15px;background:#fff;color:var(--ink)}
+.news-tabs{display:flex;gap:6px;flex-wrap:wrap;background:#edf2e9;padding:5px;border-radius:14px}
+.news-tabs button{border:0;border-radius:10px;padding:9px 15px;background:transparent;color:var(--deep);font-weight:700}
+.news-tabs button.active{background:var(--deep);color:#fff;box-shadow:0 4px 10px #20352c22}
+.news-publisher{display:block;text-decoration:none;color:var(--deep);position:relative}
+.news-publisher:after{content:'↗';position:absolute;right:17px;top:16px;color:#548873;font-size:19px}
+.news-publisher[hidden],#newsNoMatch[hidden]{display:none!important}
+.news-publisher small{overflow-wrap:anywhere}
+@media(max-width:620px){.news-simple-tools{align-items:stretch}.news-simple-tools label{max-width:none}.news-tabs{width:100%;justify-content:space-between}.news-tabs button{flex:1;padding:9px 6px}}
+</style>
+<style>
+/* Newsroom semicircle rotating carousel — scoped to news only */
+#news .news-wheel-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:22px 0 4px}
+#news .news-wheel-head strong{display:block;font:800 21px var(--serif);color:var(--deep)}
+#news .news-wheel-head span{display:block;color:var(--mut);font-size:13px}
+#news .news-wheel-controls{display:flex;align-items:center;gap:12px}
+#news .news-wheel-controls button{width:46px;height:46px;border:1px solid #c7dace;border-radius:50%;background:#fff;color:#1e5b49;font-size:23px;box-shadow:0 5px 18px #153e2712;transition:background .2s,transform .2s}
+#news .news-wheel-controls button:hover:not(:disabled){background:#dceee2;transform:scale(1.07)}
+#news .news-wheel-controls button:disabled{opacity:.35;cursor:not-allowed}
+#news #newsPosition{min-width:55px;text-align:center;font-weight:800;color:#285744}
+#news .news-wheel-viewport{position:relative;height:370px;overflow:hidden;isolation:isolate;border-radius:25px;background:radial-gradient(ellipse at 50% 100%,#dceee4 0%,#f1f7f1 38%,#f9fbf7 75%);border:1px solid #e1eae0;touch-action:pan-y}
+#news .news-wheel-viewport:focus-visible{outline:3px solid #5b9b78;outline-offset:3px}
+#news .news-wheel-glow{position:absolute;width:600px;height:210px;border:2px dashed #b2d0bc;border-radius:50%;bottom:-125px;left:50%;transform:translateX(-50%);pointer-events:none}
+#news .news-publishers{display:block;position:absolute;inset:0;perspective:1100px}
+#news .news-publisher{position:absolute;left:50%;top:51%;width:220px;height:198px;min-height:0;transform:translate(-50%,-50%);padding:21px 17px;transition:transform .55s cubic-bezier(.2,.75,.2,1),opacity .4s,filter .4s,box-shadow .3s;box-shadow:0 18px 30px #15432b18;will-change:transform;overflow:hidden}
+#news .news-publisher:hover{box-shadow:0 22px 40px #15432b2b}
+#news .news-publisher:after{top:13px;right:13px}
+#news .news-publisher .np-icon{width:55px;height:55px;font-size:27px;border-radius:17px}
+#news .news-publisher strong{font-size:18px}
+#news .news-publisher small{font-size:12px;line-height:1.5}
+#news .news-wheel-caption{text-align:center;color:#577265;font-size:13px;margin-top:12px}
+#news .news-wheel-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#37a273;margin-right:6px}
+#news .news-publisher[hidden]{display:none!important}
+@media(max-width:700px){#news .news-wheel-viewport{height:320px}#news .news-publisher{width:175px;height:180px;padding:15px}#news .news-publisher strong{font-size:15px}#news .news-publisher .np-icon{width:43px;height:43px;font-size:22px}#news .news-wheel-glow{width:380px}#news .news-wheel-head strong{font-size:17px}}
+@media(prefers-reduced-motion:reduce){#news .news-publisher{transition:none}}
+</style>
+<style>
+/* Newspaper identity: recognizable mastheads, genuine site icons and clearer wheel */
+#news .news-wheel-viewport{height:435px;background:radial-gradient(ellipse at 50% 100%,#d5e8dc 0%,#eef6ee 46%,#f9fbf7 100%)}
+#news .news-publisher{width:260px;height:245px;padding:18px 20px;background:#fff;border:2px solid #d8e5db;border-radius:22px;box-shadow:0 16px 38px #163d2b24;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start}
+#news .news-publisher:hover{border-color:#328b69;box-shadow:0 22px 45px #163d2b30}
+#news .news-publisher .np-news-label{display:inline-block;font:800 10px/1.2 system-ui,sans-serif;letter-spacing:1.2px;color:#267557;background:#e5f4eb;border-radius:50px;padding:6px 10px;margin-bottom:10px}
+#news .news-publisher .np-icon{width:76px;height:76px;display:grid;place-items:center;background:#fff;border:1px solid #e4e9e5;border-radius:17px;margin-bottom:12px;overflow:hidden;box-shadow:0 4px 14px #123a2212}
+#news .news-publisher .np-icon img{width:62px;height:62px;object-fit:contain}
+#news .news-publisher strong{font-size:21px;line-height:1.3;color:#173d2c;font-weight:800}
+#news .news-publisher small{font-size:12px;color:#4c7160;margin-top:8px;font-weight:600}
+#news .news-wheel-head strong{font-size:24px}
+#news .news-wheel-caption{font-size:15px;font-weight:600;color:#275f46}
+@media(max-width:700px){#news .news-wheel-viewport{height:355px}#news .news-publisher{width:190px;height:210px;padding:14px}#news .news-publisher .np-icon{width:58px;height:58px;margin-bottom:8px}#news .news-publisher .np-icon img{width:48px;height:48px}#news .news-publisher strong{font-size:17px}#news .news-publisher .np-news-label{font-size:9px;margin-bottom:7px}}
+</style>
+<style>
+.monitor-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.station-list{display:grid;gap:10px;margin:18px 0}
+.station-item{border:1px solid var(--line);border-radius:14px;padding:13px;background:#f8faf5}
+.station-item strong{display:block}.station-item small{display:block;color:var(--mut)}
+.trust-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.trust-row strong{text-align:right}
+#river-status{border-left:4px solid var(--org);padding:10px 12px;background:#fff4e9;border-radius:7px}
+#river-status.available{border-left-color:var(--ok);background:#e9f5ed}
+@media(max-width:760px){.monitor-grid{grid-template-columns:1fr}.trust-row{flex-wrap:wrap}}
+</style>
+<style id="floodguard-premium-v3">
+:root{--fg-ink:#183a30;--fg-soft:#edf4ed;--fg-accent:#1c8067}
+.home-spotlight{padding:78px 0 36px}
+.spot-heading{max-width:740px;margin:0 auto 36px}
+.spot-heading h2{letter-spacing:-.025em;line-height:1.35}
+.spot-layout{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);gap:22px;align-items:start}
+.spot-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spot-choice{min-height:122px;border-radius:18px;padding:18px;box-shadow:0 5px 22px #183a3010;transition:box-shadow .2s,transform .2s,border-color .2s;background:#fffdf9}
+.spot-choice:hover{transform:translateY(-2px);box-shadow:0 14px 30px #183a301a}
+.spot-choice.active{background:#edf7f0;border:1.5px solid #3d9a79;box-shadow:0 10px 28px #1d78551d}
+.spot-choice.active .spot-icon{background:#d2ebd9}
+.spot-choice b{font-size:16px;margin:2px 0 6px}
+.spot-choice small{font-size:12.5px;line-height:1.5}
+.spot-icon{height:44px;width:44px;font-size:22px;background:#eef2e8;border-radius:13px}
+.spot-arrow{font-size:15px;opacity:.55}
+.spot-feature{position:sticky;top:112px;min-height:520px;border-radius:26px;padding:30px;background:radial-gradient(circle at 88% 12%,#4da88c,transparent 37%),linear-gradient(150deg,#174e42,#096e59 72%,#085b4b);box-shadow:0 22px 50px #0c59432b}
+.spot-feature:before{opacity:.65}
+.spot-check{background:#e6f6e8;color:#13674f}
+.spot-visual{font-size:78px}
+.spot-cta{width:100%;font-size:15px}
+.spot-count{font-variant-numeric:tabular-nums}
+.monitor-grid .card{border-radius:20px}
+html{scroll-padding-top:110px}
+@media(max-width:1050px){.spot-layout{grid-template-columns:1fr}.spot-feature{position:relative;top:auto;min-height:340px}.spot-visual{font-size:60px}}
+@media(max-width:600px){.home-spotlight{padding:45px 0 20px}.spot-heading{margin-bottom:22px}.spot-choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.spot-choice{padding:13px;min-height:147px;display:flex;flex-direction:column;gap:3px}.spot-icon{width:38px;height:38px;font-size:19px;margin-bottom:4px}.spot-choice b{font-size:14px}.spot-choice small{font-size:11.5px}.spot-arrow{right:11px;bottom:9px}.spot-feature{min-height:320px;padding:23px}.spot-visual{font-size:56px}}
+@media(prefers-reduced-motion:reduce){.spot-choice{transition:none}}
+</style><style>
+/* Visitor counter */
+.visitor-count{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid #d4e2d4;background:#e8f0e5;color:#294d3b;border-radius:999px;font-size:13px;font-weight:700;white-space:nowrap}
+.visitor-count strong{font-variant-numeric:tabular-nums}
+@media(max-width:650px){.visitor-count{padding:6px 9px;font-size:12px}header .wrap{gap:7px}}
+</style>
+<style>
+/* Publisher identity cards: prominent, recognizable publication icons */
+#news .news-publisher{align-items:center;text-align:center;justify-content:center;padding:18px 16px;gap:6px;background:linear-gradient(155deg,#fff,#f4f8f2)}
+#news .news-publisher .np-icon{width:96px;height:96px;flex:none;border-radius:22px;background:#fff;border:1px solid #dce8dd;box-shadow:0 8px 22px #173c2818;margin:0 auto 6px}
+#news .news-publisher .np-icon img{width:84px;height:84px;object-fit:contain}
+#news .news-publisher strong{font-size:19px;text-align:center;max-width:100%;overflow-wrap:anywhere}
+#news .news-publisher small{margin:0;font-size:11px;text-align:center}
+#news .news-publisher .np-news-label{margin:0 0 4px}
+@media(max-width:700px){#news .news-publisher{padding:12px 9px}#news .news-publisher .np-icon{width:69px;height:69px}#news .news-publisher .np-icon img{width:59px;height:59px}#news .news-publisher strong{font-size:15px}}
+</style>
+</head>
+<body>
+<div class="sos">তাৎক্ষণিক বিপদে এই সাইটের উত্তরের জন্য অপেক্ষা নয় — সরাসরি <a href="tel:999"><b>999</b></a> -এ কল করুন।</div>
+<header><div class="wrap">
+<a class="logo" href="#home">Flood<span>Guard</span> AI</a>
+<nav aria-label="প্রধান মেনু"><a href="#home">হোম</a><a href="#risk">ঝুঁকি ও আবহাওয়া</a><a href="#assistant">সহায়ক</a><a href="#prepare">প্রস্তুতি</a><a href="#supplies">খাদ্য-পানি</a><a href="#after">বন্যার পরে</a><a href="#history">বন্যার ইতিহাস</a><a href="#news">নিউজ পোর্টাল</a><a href="#ml">ML মডেল</a><a href="#emergency">জরুরি নম্বর</a><a href="#monitor">নদী পর্যবেক্ষণ</a></nav>
+<div class="visitor-count" role="status" aria-live="polite" title="ওয়েবসাইটটি মোট যতবার খোলা হয়েছে">👥 মোট ভিজিট: <strong id="visitor-total">—</strong></div><a class="call" href="tel:999">☎ 999</a></div></header>
+<section class="hero editorial-hero" data-p="home" id="home">
+<div class="hero-photo"><img alt="নদী ও পানির প্রাকৃতিক দৃশ্য — FloodGuard-এর প্রস্তুতি বার্তা" fetchpriority="high" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&amp;fit=crop&amp;w=1800&amp;q=85"/></div>
+<div class="hero-shade"></div>
+<div class="wrap hero-content">
+<div class="hero-copy"><span class="tag">বাংলাদেশের পরিবারগুলোর জন্য</span>
+<h1>বন্যার আগে,<br/><em>পরিবারের পাশে।</em></h1>
+<p class="lead">আবহাওয়ার তথ্য বুঝুন, পরিবারের প্রস্তুতি গুছিয়ে নিন, খাবার-পানির হিসাব করুন আর বাংলাদেশের বন্যার ইতিহাস জানুন—সহজ বাংলায়।</p>
+<div class="acts"><a class="btn y" href="#prepare">পরিবারের পরিকল্পনা বানান ↗</a><a class="btn o" href="#history">বন্যার ইতিহাস দেখুন</a></div>
+<p class="hero-note">একটি শিক্ষামূলক প্রোটোটাইপ · সরকারি সতর্কবার্তার বিকল্প নয়</p>
+</div>
+<div class="hero-side"><div class="hero-note-card"><span class="hero-dot"></span><div><b>প্রস্তুতি আগে থেকেই</b><span>নিরাপদ পানি · জরুরি ব্যাগ · পরিবারের পরিকল্পনা</span></div></div></div>
+</div>
+<span hidden="" id="water"></span><span hidden="" id="gl">—</span><span hidden="" id="gs">এলাকা বেছে দেখুন</span>
+</section>
+<div class="wrap" data-p="home"><div class="stats">
+<div class="stat"><b>৩ দিন</b><span>বৃষ্টির পূর্বাভাস (Open-Meteo)</span></div>
+<div class="stat"><b>২২ জেলা/শহর</b><span>এলাকা লোকেটর — বন্যার সতর্কতা নয়</span></div>
+<div class="stat"><b>৮+ বিষয়</b><span>সহায়কের উত্তর: প্রস্তুতি থেকে পরিষ্কার</span></div>
+<div class="stat"><b>৯৯৯</b><span>জাতীয় জরুরি সেবা</span></div></div></div>
+<main class="wrap">
+<section aria-labelledby="spot-heading" class="home-spotlight" data-p="home"><div class="spot-heading"><span class="k">আপনার পাশে, প্রতিটি ধাপে</span><h2 id="spot-heading">প্রয়োজন অনুযায়ী সহায়তা বেছে নিন</h2><p class="sub">দশটি গুরুত্বপূর্ণ সেবা, একটি প্ল্যাটফর্মে। সেবা বেছে নিয়ে বিস্তারিত জানুন।</p></div><div class="spot-layout"><div class="spot-choices"><button aria-pressed="true" class="spot-choice active" data-spot="0" type="button"><span class="spot-icon">🌧️</span><span><b>ঝুঁকি ও আবহাওয়া</b><small>লাইভ বৃষ্টির পূর্বাভাস ও ঝুঁকির সূচক</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="1" type="button"><span class="spot-icon">💬</span><span><b>বাংলা সহায়ক</b><small>সমস্যা লিখুন, পরের ধাপ জানুন</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="2" type="button"><span class="spot-icon">🎒</span><span><b>প্রস্তুতি</b><small>জরুরি ব্যাগের চেকলিস্ট</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="3" type="button"><span class="spot-icon">🍚</span><span><b>খাদ্য-পানি</b><small>শিশু, বয়স্ক, রোগীসহ পরিবারের হিসাব</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="4" type="button"><span class="spot-icon">🧼</span><span><b>বন্যার পরে</b><small>পানি, খাবার, স্বাস্থ্য ও ঘর</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="5" type="button"><span class="spot-icon">📜</span><span><b>বন্যার ইতিহাস</b><small>১৯৮৮ থেকে ২০২৪, ছবি ও তথ্য</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="6" type="button"><span class="spot-icon">🧠</span><span><b>ML মডেল</b><small>স্টেশন-ভিত্তিক পরীক্ষামূলক ফল</small></span><span class="spot-arrow">↗</span></button><button aria-pressed="false" class="spot-choice" data-spot="7" type="button"><span class="spot-icon">☎️</span><span><b>জরুরি নম্বর</b><small>999, 1090, 333, 16263</small></span><span class="spot-arrow">↗</span></button><button type="button" class="spot-choice" data-spot="8" aria-pressed="false"><span class="spot-icon">🌊</span><span><b>নদী পর্যবেক্ষণ</b><small>পানির উচ্চতা, বিপৎসীমা ও তথ্যের উৎস</small></span><span class="spot-arrow">↗</span></button>
+<button type="button" class="spot-choice" data-spot="9" aria-pressed="false"><span class="spot-icon">📰</span><span><b>সংবাদপত্রের গ্যালারি</b><small>পরিচিত সংবাদমাধ্যমের ওয়েবসাইটে যান</small></span><span class="spot-arrow">↗</span></button></div><div aria-live="polite" class="spot-feature"><div class="spot-top"><span class="spot-check">✓</span><span class="spot-count" id="spotCount">০১ / ১০</span></div><div aria-hidden="true" class="spot-visual" id="spotVisual">🌧️</div><div class="spot-content"><span class="spot-eyebrow">FLOODGUARD AI · সেবা পরিচিতি</span><h3 id="spotTitle">ঝুঁকি ও আবহাওয়া</h3><p id="spotDescription">লাইভ বৃষ্টির পূর্বাভাস ও ঝুঁকির সূচক</p><a class="spot-cta" href="#risk" id="spotLink">এই সেবায় যান <span>↗</span></a></div></div></div></section>
+<section class="s" data-p="risk" id="risk"><span class="k">ঝুঁকি ও আবহাওয়া</span><h2>আপনার এলাকার অবস্থা বুঝুন।</h2><div class="risk-chooser" id="riskChooser"><div class="risk-showcase"><div class="risk-showcase-copy"><span class="risk-pill">✦ FLOODGUARD · SAFETY HUB</span><h3>প্রকৃতির খবর জানুন।<br/><em>সিদ্ধান্ত নিন সচেতনভাবে।</em></h3><p>আপনার জন্য দুটি আলাদা অভিজ্ঞতা—একটিতে এলাকার আবহাওয়া, অন্যটিতে নিজের পরিস্থিতি বুঝে প্রস্তুতির পরিকল্পনা।</p><div class="risk-mini-tags"><span>◉ ৩ দিনের পূর্বাভাস</span><span>◉ পরিস্থিতি যাচাই</span><span>◉ প্রস্তুতির পরামর্শ</span></div></div><div aria-hidden="true" class="risk-showcase-art"><div class="risk-orbit orbit-one"></div><div class="risk-orbit orbit-two"></div><div class="risk-art-center">🌦️<small>STAY PREPARED</small></div><span class="risk-art-float risk-art-a">☁️</span><span class="risk-art-float risk-art-b">🛡️</span></div></div><div class="risk-options"><button class="risk-option" data-risk="weather" type="button"><span class="risk-option-number">01 / 02</span><span class="risk-symbol">🌦️</span><span class="risk-type">লাইভ আবহাওয়া</span><strong>এলাকা ও আবহাওয়া</strong><small>জেলা বেছে তাপমাত্রা, বৃষ্টি, বাতাস এবং তিন দিনের পূর্বাভাস দেখুন।</small><span class="risk-go">এক্সপ্লোর করুন  ↗</span></button><button class="risk-option" data-risk="situation" type="button"><span class="risk-option-number">02 / 02</span><span class="risk-symbol">🛡️</span><span class="risk-type">পরিস্থিতি মূল্যায়ন</span><strong>আমার বর্তমান পরিস্থিতি</strong><small>পানি, উজানের ঢল ও আপনার পরিবারের তথ্য দিয়ে পরীক্ষামূলক ঝুঁকি সূচক হিসাব করুন।</small><span class="risk-go">এক্সপ্লোর করুন  ↗</span></button></div></div>
+<p class="sub">নির্বাচিত জেলা/শহরের আবহাওয়া ও বৃষ্টির পূর্বাভাস দেখুন। আবহাওয়ার তথ্য বন্যার নিশ্চিত পূর্বাভাস নয়; নদীর পর্যবেক্ষণ ও সরকারি সতর্কতার জন্য নিচের FFWC লিংক দেখুন।</p>
+<div class="note" style="margin:0 0 18px"><strong>সরকারি নদীর পানি ও বন্যা সতর্কতা:</strong> <a href="https://ffwc.gov.bd/" rel="noopener noreferrer" target="_blank">FFWC সরকারি সাইট ↗</a> · <a href="https://ffwc.gov.bd/app/observed-water-level" rel="noopener noreferrer" target="_blank">পর্যবেক্ষিত পানির স্তর ↗</a></div>
+<div class="risk-panels"><div class="risk-panel" hidden="" id="riskWeather"><button class="back-choice" type="button">← অন্য সেবা বেছে নিন</button><div class="card"><div class="risk-panel-heading"><span class="risk-panel-eyebrow">01 · WEATHER EXPLORER</span><h3>আজ আপনার এলাকার আকাশ কী বলছে?</h3><p>জেলা নির্বাচন করে লাইভ আবহাওয়া এবং পরবর্তী তিন দিনের পূর্বাভাস দেখুন।</p></div>
+<label for="dist">জেলা / শহর</label><div aria-hidden="true" class="weather-scene"><span class="weather-scene-sun">☀️</span><span class="weather-scene-cloud">☁️</span><span class="weather-scene-rain">· · · · ·</span><div class="weather-scene-caption">LIVE WEATHER EXPLORER <b>বাংলাদেশ</b></div></div><select id="dist"></select>
+<button class="btn" id="wbtn" style="margin-top:12px">↻ আবহাওয়া আনুন</button>
+<div class="wx"><div><b id="wT">--°</b><span>তাপমাত্রা</span></div><div><b id="wR">--</b><span>বৃষ্টি (মিমি)</span></div><div><b id="wH">--%</b><span>আর্দ্রতা</span></div><div><b id="wW">--</b><span>বাতাস কিমি/ঘ</span></div></div>
+<div class="days" id="days"></div><p class="sm mut" id="wst" style="margin:10px 0 0">তথ্য লোড হয়নি। (ইন্টারনেট প্রয়োজন)</p><div class="risk-source-strip"><span>ⓘ আবহাওয়ার তথ্য: Open-Meteo API</span><a href="https://ffwc.gov.bd/app/observed-water-level" rel="noopener noreferrer" target="_blank">সরকারি নদীর পানির তথ্য ↗</a></div></div></div><div class="risk-panel" hidden="" id="riskSituation"><button class="back-choice" type="button">← অন্য সেবা বেছে নিন</button><div class="card"><div class="risk-panel-heading"><span class="risk-panel-eyebrow">02 · SITUATION CHECK</span><h3>আপনার চারপাশের পরিস্থিতি কেমন?</h3><p>কয়েকটি প্রশ্নের উত্তর দিয়ে প্রস্তুতির অগ্রাধিকার বুঝুন। এটি সরকারি বন্যা সতর্কতা বা বৈজ্ঞানিক পূর্বাভাস নয়।</p></div><div class="risk-progress-label"><span>পরিস্থিতি মূল্যায়নের ইনপুট</span><b id="riskInputProgress">০ / ৫</b></div><div class="risk-progress-track"><i id="riskInputBar"></i></div><div class="risk-live-layout"><div class="risk-live-graphic"><div class="risk-live-rings"><span id="riskLiveIcon">🛡️</span></div><strong id="riskLiveTitle">আপনার তথ্য দিন</strong><small id="riskLiveText">ফল জানতে নিচের প্রশ্নগুলোর উত্তর দিন</small></div><div class="risk-live-explainer"><b>কীভাবে ব্যবহার করবেন?</b><p>পানির আনুমানিক অবস্থা, উজানের বৃষ্টি ও পরিবারের পরিস্থিতি জানান। এরপর ‘ঝুঁকির সূচক দেখুন’ চাপুন।</p><span>⚠ শতাংশটি শুধু আপনার দেওয়া ধারণা; বাস্তব পানির উচ্চতা নয়।</span></div></div>
+<div class="row" style="margin-top:12px"><label for="rv" style="margin:0">পানির স্তর সম্পর্কে আপনার আনুমানিক ধারণা</label><span class="v" id="rvv">70%</span></div><input id="rv" max="130" min="0" type="range" value="70"/>
+<p class="sm mut" style="margin:4px 0 12px">এই স্লাইডারের শতাংশ সরকারি পরিমাপ নয়। FFWC-তে স্টেশনভেদে পানির স্তর (মিটার) ও বিপদসীমা দেখুন: <a href="https://ffwc.gov.bd/app/observed-water-level" rel="noopener noreferrer" target="_blank">Observed Water Level ↗</a>। স্টেশন বেছে নিলে তার বর্তমান স্তর, বিপদসীমা ও পার্থক্য মিলিয়ে দেখুন।</p>
+<div class="row"><label for="up" style="margin:8px 0 0">উজানে ভারী বৃষ্টি/ঢল</label><span class="v" id="upv">না</span></div><input id="up" max="2" min="0" type="range" value="0"/>
+<label class="ck"><input id="low" type="checkbox"/> আমার বাড়ি নিচু এলাকায়</label>
+<label class="ck"><input id="emb" type="checkbox"/> বাঁধ/ভাঙন ঝুঁকি আছে</label>
+<label class="ck"><input id="vul" type="checkbox"/> বাড়িতে শিশু/বয়স্ক/অসুস্থ আছেন</label>
+<button class="btn" id="calc">আমার পরিস্থিতি বিশ্লেষণ করুন  ↗</button></div><div class="risk-result-heading"><span>✦ PERSONALIZED READINESS</span><strong>আপনার পরিস্থিতির সারাংশ</strong></div><div class="res" id="res"><h3>এখনো হিসাব হয়নি</h3><span class="mut">আবহাওয়া আনুন ও “ঝুঁকির সূচক দেখুন” চাপুন।</span></div></div>
+</div>
+<div class="note">⚠ এটি যাচাইকৃত বন্যা পূর্বাভাস নয়। সরকারি সতর্কবার্তা (FFWC, DDM, ১০৯০) সবসময় অগ্রাধিকার পাবে।</div></section>
+<section class="s" data-p="monitor" id="monitor" aria-labelledby="monitor-title">
+<span class="k">পর্যবেক্ষণ কেন্দ্র</span><h2 id="monitor-title">নদী ও আবহাওয়ার তথ্য যাচাই করুন</h2>
+<p class="sub">সরকারি নদী পর্যবেক্ষণের উৎস এবং আবহাওয়ার পূর্বাভাস আলাদা করে দেখুন। সরকারি ডেটা সংযোগ না থাকলে কোনো কৃত্রিম পানির উচ্চতা বা বিপদসংকেত দেখানো হয় না।</p>
+<div class="monitor-grid">
+<div class="card"><h3>🌊 সরকারি নদীর তথ্য</h3><p id="river-status" role="status" class="mut">তথ্য সংযোগ যাচাই করা হচ্ছে…</p><div id="river-stations" class="station-list"></div><button type="button" class="btn s" id="refresh-river">আবার যাচাই করুন</button><p class="sm mut">প্রাথমিক উৎস: <a href="https://www.ffwc.gov.bd/" target="_blank" rel="noopener noreferrer">FFWC</a> · <a href="https://bwdb.gov.bd/" target="_blank" rel="noopener noreferrer">BWDB</a></p></div>
+<div class="card"><h3>☁️ তথ্যের নির্ভরযোগ্যতা</h3><div class="trust-row"><span>আবহাওয়া</span><strong>Open-Meteo (পূর্বাভাস)</strong></div><div class="trust-row"><span>নদীর পানি</span><strong id="river-health">সংযোগ যাচাই হচ্ছে</strong></div><div class="trust-row"><span>সর্বশেষ যাচাই</span><strong id="river-checked">—</strong></div><p class="note">বৃষ্টির পূর্বাভাস মানেই বন্যার পূর্বাভাস নয়। পানি বিপৎসীমা অতিক্রম করেছে—এমন দাবি কেবল যাচাইকৃত স্টেশন ডেটা দিয়ে করা যায়।</p></div>
+</div></section>
+<section class="s" data-p="assistant" id="assistant"><span class="k">সহায়ক</span><h2>আপনার প্রশ্ন, সহজ বাংলায় সহায়তা।</h2>
+<p class="sub">বাংলায় লিখুন। এটি নিয়মভিত্তিক সহায়ক (লাইভ জেনারেটিভ AI নয়) — সাধারণ নিরাপত্তা-পরামর্শ দেয়।</p><div class="section-experience" aria-label="প্রশ্ন করুন, সহজ ভাষায় করণীয় জানুন।"><div><span class="eyebrow">✦ BANGLA HELP DESK</span><h3>প্রশ্ন করুন, সহজ ভাষায় করণীয় জানুন।</h3><p>প্রস্তুতি, নিরাপদ পানি ও জরুরি পরিস্থিতি নিয়ে সাধারণ নির্দেশনা পেতে প্রশ্ন করুন।</p><div class="pills"><span>✓ দ্রুত প্রশ্ন</span><span>✓ বাংলা উত্তর</span><span>✓ নিরাপত্তা নির্দেশনা</span></div></div><div class="experience-icon" aria-hidden="true">💬</div></div>
+<div class="card chat-shell"><div class="chat-head"><span class="chat-avatar">🛟</span><div><strong>FloodGuard বাংলা সহায়ক</strong><small>নিয়মভিত্তিক নিরাপত্তা সহায়তা · AI লাইভ চ্যাট নয়</small></div><a class="chat-emergency" href="tel:999">☎ ৯৯৯</a></div><div aria-live="polite" class="chat" id="chat"></div><p class="quick-label">দ্রুত জানতে চান?</p><div class="chips" id="chips"></div>
+<div class="send"><input aria-label="প্রশ্ন" id="q" placeholder="যেমন: ঘরে পানি ঢুকছে, কী করব?" type="text"/><button class="btn" id="sq">পাঠান</button></div></div></section>
+<section class="s" data-p="prepare" id="prepare"><span class="k">প্রস্তুতি</span><h2>আগে থেকে ছোট ছোট পদক্ষেপ।</h2>
+<p class="sub">তালিকা টিক দিন — অগ্রগতি এই ব্রাউজারে সংরক্ষিত থাকবে।</p><div class="section-experience" aria-label="প্রস্তুতি হবে পরিকল্পিত, সহজ ও ধাপে ধাপে।"><div><span class="eyebrow">✦ PREPAREDNESS STUDIO</span><h3>প্রস্তুতি হবে পরিকল্পিত, সহজ ও ধাপে ধাপে।</h3><p>আপনার পরিবারের জরুরি প্রস্তুতি এক জায়গায় গুছিয়ে নিন। চেকলিস্টে টিক দিলে অগ্রগতি দেখতে পাবেন।</p><div class="pills"><span>✓ পরিবারের পরিকল্পনা</span><span>✓ জরুরি ব্যাগ</span><span>✓ প্রস্তুতির অগ্রগতি</span></div></div><div class="experience-icon" aria-hidden="true">🎒</div></div>
+<div class="g3" style="margin-bottom:16px">
+<div class="card"><span class="step">STEP 01</span><h3>পরিবারের পরিকল্পনা</h3><span class="mut">কোথায় মিলবেন, কাকে ফোন করবেন, আশ্রয়কেন্দ্র কোথায় — আগেই ঠিক করুন।</span></div>
+<div class="card"><span class="step">STEP 02</span><h3>জরুরি ব্যাগ</h3><span class="mut">পানি, শুকনো খাবার, ওষুধ, টর্চ, পাওয়ার ব্যাংক, কাগজপত্র জিপলকে রাখুন।</span></div>
+<div class="card"><span class="step">STEP 03</span><h3>ঘর ও সম্পদ</h3><span class="mut">জরুরি জিনিস উঁচুতে তুলুন, গবাদি পশুর জন্য উঁচু জায়গা ঠিক রাখুন।</span></div></div>
+<div class="card"><div class="row"><h3>আপনার জরুরি ব্যাগে কী আছে?</h3><span class="v" id="pv">০%</span></div><div class="prog"><i id="pb"></i></div><div class="g2" id="cl"></div>
+<button class="btn s" id="rst" style="margin-top:12px">তালিকা রিসেট</button></div></section>
+<section class="s" data-p="supplies" id="supplies">
+<span class="k">পরিবারের খাদ্য-পানি পরিকল্পনা</span><h2>কত জনের জন্য, কী কী রাখবেন?</h2>
+<p class="sub">সদস্যের ধরন ও দিনের সংখ্যা বেছে নিন। সাধারণ খাবার, পানি এবং শিশু, বয়স্ক, গর্ভবতী/দুগ্ধদানকারী মা ও নির্দিষ্ট স্বাস্থ্য-প্রয়োজনের জন্য আলাদা তালিকা তৈরি হবে।</p><div class="section-experience" aria-label="প্রতিটি সদস্যের জন্য আলাদা যত্ন।"><div><span class="eyebrow">✦ FAMILY SUPPLY PLANNER</span><h3>প্রতিটি সদস্যের জন্য আলাদা যত্ন।</h3><p>সদস্য সংখ্যা ও সময়কাল পরিবর্তন করে মুহূর্তেই খাবার-পানির মজুত পরিকল্পনা দেখুন।</p><div class="pills"><span>✓ সদস্যভিত্তিক হিসাব</span><span>✓ স্বয়ংক্রিয় তালিকা</span><span>✓ বিশেষ যত্ন</span></div></div><div class="experience-icon" aria-hidden="true">🥣</div></div>
+<div class="food-intro"><div><b>01</b><span>পরিবারের সদস্য গুনুন</span></div><div><b>02</b><span>কত দিনের মজুত দরকার ঠিক করুন</span></div><div><b>03</b><span>তালিকা দেখে মজুত যাচাই করুন</span></div></div>
+<div class="g2 food-layout" style="align-items:start"><div class="card food-form-card"><span class="k">আপনার পরিবার</span><h3>সদস্য ও সময়কাল</h3><div id="sl"></div><p class="sm mut">রোগীর সংখ্যা অন্য সদস্যদের মধ্যেই গণ্য হতে পারে—এখানে রোগীর সংখ্যা শুধু বাড়তি যত্নের তালিকা তৈরিতে ব্যবহৃত হয়।</p></div>
+<div class="food-output"><div class="sum" id="sum"></div><div class="card food-table-card"><span class="k">পরিকল্পিত মজুত</span><h3>কেনাকাটার তালিকা</h3><div class="table-scroll"><table><thead><tr><th>জিনিস</th><th>মোট</th><th>মন্তব্য</th></tr></thead><tbody id="tb"></tbody></table></div><p class="sm mut">এগুলো আনুমানিক পরিকল্পনার পরিমাণ, ব্যক্তিগত পুষ্টি-পরামর্শ নয়। প্যাকেটের serving size, মেয়াদ ও পরিবারের প্রয়োজন যাচাই করুন।</p></div></div></div>
+<div class="food-special"><span class="k">বিশেষ সদস্যদের জন্য</span><h3>সবার প্রয়োজন এক নয়</h3><p class="mut">শিশু, বয়স্ক ও রোগীদের খাবার, ওষুধ ও পরিচর্যার ব্যবস্থা আলাদা করে ভাবুন।</p><div class="special-grid" id="sp"></div></div>
+<div class="note food-note"><b>নিরাপদ খাবার ও পানি:</b> সিল করা, অক্ষত প্যাকেটের খাবার ও নিরাপদ পানীয় পানি বেছে নিন। বন্যার পানিতে ভেজা খাবার খাবেন না। ফিটকিরি একা পানি জীবাণুমুক্ত করে না। পানি নিরাপদ কি না সন্দেহ হলে স্থানীয় স্বাস্থ্য কর্তৃপক্ষের নির্দেশ অনুসরণ করুন। ডায়াবেটিস, কিডনি রোগ, গিলতে সমস্যা বা অন্য চিকিৎসাগত ডায়েট থাকলে চিকিৎসকের নির্দেশই অগ্রাধিকার পাবে।</div>
+</section>
+<section class="s" data-p="after" id="after"><span class="k">বন্যার পরে · পুনরুদ্ধার গাইড</span><h2>নিরাপদে ফিরুন, ধাপে ধাপে ঘুরে দাঁড়ান।</h2><p class="sub">প্রতিটি বিষয়ে বিস্তারিত জানতে কার্ডে ক্লিক করুন। জরুরি বিপদে ৯৯৯-এ যোগাযোগ করুন।</p><div class="section-experience" aria-label="পানি নামার পরও নিরাপত্তাই প্রথম।"><div><span class="eyebrow">✦ RECOVERY GUIDE</span><h3>পানি নামার পরও নিরাপত্তাই প্রথম।</h3><p>প্রতিটি বিষয়ে ক্লিক করে বিস্তারিত নির্দেশনা পড়ুন। তাড়াহুড়ো নয়—নিরাপদে ঘরে ফেরার পথ বেছে নিন।</p><div class="pills"><span>✓ ৮টি সহায়ক বিষয়</span><span>✓ ক্লিক করে বিস্তারিত</span><span>✓ ধাপে ধাপে করণীয়</span></div></div><div class="experience-icon" aria-hidden="true">🏡</div></div><div class="after-grid">
+<details class="after-card"><summary><span class="after-emoji">💧</span><strong>পানি ও খাবারের নিরাপত্তা</strong><span>পানীয় পানি ও খাবার নিরাপদ রাখার উপায়</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><p>বন্যার পানি ও ডুবে যাওয়া পানির উৎস দূষিত হতে পারে।</p><ul><li>নিরাপদ বোতলজাত বা কর্তৃপক্ষের অনুমোদিত পানি পান করুন।</li><li>প্রয়োজনে পানি ফুটানো বা জীবাণুমুক্ত করার জন্য স্বাস্থ্য কর্তৃপক্ষের নির্দেশ অনুসরণ করুন; ফিটকিরি একা জীবাণু দূর করে না।</li><li>বন্যার পানিতে ভেজা খাবার, খোলা প্যাকেট ও নষ্ট খাবার ফেলে দিন।</li><li>খাবার তৈরির আগে সাবান দিয়ে হাত ধুয়ে নিন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">⚡</span><strong>বিদ্যুৎ ও ঘরের নিরাপত্তা</strong><span>বাড়িতে ফেরার আগে কী যাচাই করবেন</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>ভাঙা দেয়াল, দুর্বল ছাদ, গ্যাসের গন্ধ বা ঝুলন্ত তার থাকলে ঘরে ঢুকবেন না।</li><li>পানিতে দাঁড়িয়ে সুইচ বা বৈদ্যুতিক যন্ত্র স্পর্শ করবেন না।</li><li>যোগ্য বিদ্যুৎকর্মী নিরাপদ ঘোষণা না করা পর্যন্ত বিদ্যুৎ সংযোগ চালু করবেন না।</li><li>স্থানীয় প্রশাসনের নির্দেশনা মেনে বাড়ি ফিরুন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">🩺</span><strong>স্বাস্থ্য ও চিকিৎসা</strong><span>অসুস্থতার লক্ষণ ও প্রাথমিক সতর্কতা</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>ডায়রিয়া হলে ওরস্যালাইন দিন এবং পানিশূন্যতার লক্ষণ দেখলে চিকিৎসা নিন।</li><li>জ্বর, ক্ষত সংক্রমণ বা চর্মরোগ হলে স্বাস্থ্যকেন্দ্রে যোগাযোগ করুন।</li><li>সাপে কামড়ালে দ্রুত হাসপাতালে যান; কাটা, চোষা বা ঝাড়ফুঁক করবেন না।</li><li>নিয়মিত ওষুধ ও চিকিৎসার নথি নিরাপদে রাখুন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">🧹</span><strong>ঘর পরিষ্কার ও জীবাণুমুক্তকরণ</strong><span>কাদা, আবর্জনা ও ছত্রাকের ঝুঁকি</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>গ্লাভস, বুট ও উপযুক্ত মাস্ক ব্যবহার করুন।</li><li>শিশুদের পরিষ্কার করার স্থান থেকে দূরে রাখুন।</li><li>দরজা-জানালা খুলে বাতাস চলাচল নিশ্চিত করুন।</li><li>বিভিন্ন রাসায়নিক ক্লিনার একসঙ্গে মেশাবেন না।</li><li>বেশি ক্ষতি বা ছত্রাক হলে প্রশিক্ষিত সহায়তা নিন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">👨‍👩‍👧</span><strong>শিশু ও পরিবারের যত্ন</strong><span>বিশেষ চাহিদাসম্পন্ন সদস্যদের সুরক্ষা</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>শিশুদের বন্যার পানি, ভাঙা স্থাপনা ও বৈদ্যুতিক তার থেকে দূরে রাখুন।</li><li>বয়স্ক, গর্ভবতী ও অসুস্থ সদস্যদের ওষুধ এবং নিরাপদ খাবারের ব্যবস্থা করুন।</li><li>পরিবারের সদস্যদের অবস্থান ও জরুরি যোগাযোগ নম্বর নিশ্চিত করুন।</li><li>শিশুদের কথা শুনুন এবং স্বাভাবিক দৈনন্দিন রুটিন ফেরাতে সহায়তা করুন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">📋</span><strong>ক্ষয়ক্ষতি ও সহায়তা</strong><span>প্রমাণ সংরক্ষণ ও সরকারি সহায়তার খোঁজ</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>নিরাপদ হলে ক্ষতিগ্রস্ত জিনিসপত্রের ছবি ও তালিকা রাখুন।</li><li>গুরুত্বপূর্ণ কাগজপত্র শুকিয়ে সংরক্ষণ করুন।</li><li>ইউনিয়ন পরিষদ, উপজেলা প্রশাসন বা দুর্যোগ ব্যবস্থাপনা দপ্তরে সহায়তার তথ্য জিজ্ঞেস করুন।</li><li>অপরিচিত ব্যক্তিকে OTP, পাসওয়ার্ড বা ব্যাংক তথ্য দেবেন না।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">🌿</span><strong>মানসিক সুস্থতা</strong><span>দুর্যোগের পর পরিবারের মানসিক যত্ন</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>দুশ্চিন্তা বা ঘুমের সমস্যা হলে বিশ্বস্ত মানুষের সঙ্গে কথা বলুন।</li><li>বিশ্রাম, খাবার ও নিয়মিত যোগাযোগের সুযোগ রাখুন।</li><li>দীর্ঘদিন সমস্যা চললে স্বাস্থ্যকর্মী বা কাউন্সেলরের সহায়তা নিন।</li></ul></div></details>
+<details class="after-card"><summary><span class="after-emoji">🐄</span><strong>পশুপাখি ও পরিবেশ</strong><span>গবাদি পশু, বর্জ্য ও আশপাশের নিরাপত্তা</span><b>বিস্তারিত দেখুন ＋</b></summary><div class="after-details"><ul><li>পশুদের জন্য নিরাপদ শুকনো আশ্রয় ও পরিষ্কার পানির ব্যবস্থা করুন।</li><li>অসুস্থ পশু থাকলে প্রাণিসম্পদ অফিসে যোগাযোগ করুন।</li><li>দূষিত আবর্জনা নিরাপদে অপসারণের জন্য স্থানীয় কর্তৃপক্ষের নির্দেশ অনুসরণ করুন।</li></ul></div></details>
+</div><div class="note">এই নির্দেশনাগুলো সাধারণ সচেতনতামূলক তথ্য। সরকারি উদ্ধার ও স্বাস্থ্য নির্দেশনা সর্বদা অগ্রাধিকার পাবে।</div></section>
+<section class="s" data-p="history" id="history"><span class="k">বন্যার ইতিহাস</span><h2>অতীত থেকে শেখা।</h2>
+<p class="sub">১৯৮৮ থেকে ২০২৪ পর্যন্ত কয়েকটি বড় বন্যার সংক্ষিপ্ত টাইমলাইন। সংখ্যাগুলো সংশ্লিষ্ট সরকারি/জাতিসংঘ সংস্থার নির্দিষ্ট তারিখের রিপোর্ট থেকে নেওয়া; সময় ও রিপোর্টভেদে পরিসংখ্যান বদলাতে পারে। ২০২৪ সালের কার্ডে ব্যবহৃত ছবি illustrative—ঘটনার আর্কাইভ ছবি নয়।</p><div class="section-experience" aria-label="অতীতের অভিজ্ঞতা, আগামী দিনের প্রস্তুতি।"><div><span class="eyebrow">✦ FLOOD HISTORY ARCHIVE</span><h3>অতীতের অভিজ্ঞতা, আগামী দিনের প্রস্তুতি।</h3><p>বছরভিত্তিক ঘটনাগুলো দেখুন এবং তথ্যের উৎস যাচাই করুন।</p><div class="pills"><span>✓ ঐতিহাসিক টাইমলাইন</span><span>✓ ঘটনাভিত্তিক কার্ড</span><span>✓ উৎসসহ তথ্য</span></div></div><div class="experience-icon" aria-hidden="true">📜</div></div>
+<div class="tl"><div><b>১৯৮৮</b> — দেশের প্রায় দুই-তৃতীয়াংশ এলাকা প্লাবিত (DDM)</div><div><b>১৯৯৮</b> — দীর্ঘস্থায়ী বন্যা; DDM-এর ঐতিহাসিক সারাংশে প্রায় ৬৭% এলাকা প্লাবিত (DDM)</div><div><b>২০০৪</b> — বড় নদীবন্যা; প্রায় ৩.৬ কোটি মানুষ আক্রান্ত (World Bank)</div><div><b>২০০৭</b> — বহু জেলা আক্রান্ত; বার্ষিক প্রতিবেদন দেখুন (BWDB/FFWC)</div><div><b>২০২২</b> — উত্তর-পূর্বাঞ্চলে বন্যা; প্রায় ৭২ লাখ মানুষ আক্রান্ত (UN/UNDP সূত্র)</div><div><b>জুন ২০২৪</b> — সিলেট বিভাগে আকস্মিক বন্যা; ২১ জুনের UNICEF আপডেটে ২০ লাখের বেশি মানুষ আক্রান্ত</div><div><b>আগস্ট ২০২৪</b> — পূর্বাঞ্চলের ১১ জেলায় বন্যা; ৩১ আগস্টের UN/UNICEF আপডেটে ৫৮.২ লাখ মানুষ আক্রান্ত</div></div>
+<div class="hgrid"><article class="hc"><img alt="১৯৮৮ সালের বন্যার পর বাংলাদেশের নদী ও প্লাবিত ভূমির স্যাটেলাইট ছবি" loading="lazy" onerror="this.remove()" src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2009/04/spot-x_image_of_bangladesh_after_the_1988_floods/9255256-5-eng-GB/SPOT-X_image_of_Bangladesh_after_the_1988_floods_pillars.jpg"/><div class="hb"><span class="yr">১৯৮৮</span><h3>দেশজুড়ে ভয়াবহ বন্যা</h3><p style="margin:0">দীর্ঘস্থায়ী প্লাবনে বিস্তীর্ণ এলাকা, বসতি, যোগাযোগ ও জীবিকা ক্ষতিগ্রস্ত হয়েছিল। DDM-এর ঐতিহাসিক সারাংশে বলা হয়েছে, দেশের প্রায় দুই-তৃতীয়াংশ এলাকা প্লাবিত হয়েছিল।</p><div class="hs"><div><b>প্রায় ⅔</b><span>দেশের এলাকা প্লাবিত (DDM)</span></div><div><b>বড় ক্ষতি</b><span>বসতি ও যোগাযোগে</span></div></div><div><a href="https://www.esa.int/ESA_Multimedia/Images/2009/04/SPOT-X_image_of_Bangladesh_after_the_1988_floods" rel="noopener noreferrer" target="_blank">ESA ছবি ↗</a> · <a href="https://ddm.gov.bd/pages/static-pages/6922ddde933eb65569e16ca3" rel="noopener noreferrer" target="_blank">DDM ↗</a> · <a href="https://sidegallery.co.uk/collection/when-the-waters-came" rel="noopener noreferrer" target="_blank">আর্কাইভ ছবি: Shahidul Alam ↗</a></div><p class="src">ছবি: ESA / SPOT-X · স্যাটেলাইট চিত্র, ঘটনাস্থলের মানুষের ছবি নয়।</p></div></article><article class="hc"><img alt="বর্ষা ও নদীর পানি — illustrative photo, historical archive photo নয়" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&amp;fit=crop&amp;w=1200&amp;q=82"/><div class="hb"><span class="yr">১৯৯৮</span><h3>দীর্ঘস্থায়ী বন্যা</h3><p style="margin:0">জুলাই থেকে সেপ্টেম্বর পর্যন্ত দীর্ঘ সময় উঁচু পানির স্তর বজায় ছিল। FAO-এর প্রতিবেদনে ৫২টি জেলার ৩১৪টি থানায় বিভিন্ন মাত্রায় বন্যার কথা এবং ৬৭ দিনের মতো দীর্ঘস্থায়ী প্লাবনের উল্লেখ আছে।</p><div class="hs"><div><b>৬৭ দিন</b><span>উঁচু পানির স্তর (FAO)</span></div><div><b>৫২ জেলা</b><span>বিভিন্ন মাত্রায় আক্রান্ত (FAO)</span></div></div><div><a href="https://www.fao.org/4/X0619e/X0619e00.htm" rel="noopener noreferrer" target="_blank">FAO প্রতিবেদন ↗</a></div><p class="src">এই ঘটনার ছবি এখানে দেখানো হয়নি; ঐতিহাসিক ছবি মূল সূত্রে দেখুন।</p></div></article><article class="hc"><img alt="জলাভূমি ও সবুজ ভূমি — illustrative photo, historical archive photo নয়" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&amp;fit=crop&amp;w=1200&amp;q=82"/><div class="hb"><span class="yr">২০০৪</span><h3>ব্যাপক নদীবন্যা</h3><p style="margin:0">বিশ্বব্যাংকের মূল্যায়নে ২০০৪ সালের বন্যায় প্রায় ৩.৬ কোটি মানুষ আক্রান্ত হয়; ঘরবাড়ি, কৃষিজমি ও পরিবহন খাতে বড় ক্ষতি হয়।</p><div class="hs"><div><b>৩.৬ কোটি</b><span>আক্রান্ত মানুষ (World Bank)</span></div><div><b>US$ 2.28B</b><span>আনুমানিক ক্ষয়ক্ষতি (World Bank)</span></div></div><div><a href="https://documents1.worldbank.org/curated/en/184451468007481834/pdf/321970HMU0110bangladesh.pdf" rel="noopener noreferrer" target="_blank">World Bank PDF ↗</a></div><p class="src">প্রতিবেদনে ঐতিহাসিক ছবি ও পুনরুদ্ধারের তথ্য আছে।</p></div></article><article class="hc"><img alt="পানি ও নদীর প্রবাহ — illustrative photo, historical archive photo নয়" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&amp;fit=crop&amp;w=1200&amp;q=82"/><div class="hb"><span class="yr">২০০৭</span><h3>বড় বন্যা</h3><p style="margin:0">বাড়িঘর, ফসল ও জীবিকার ক্ষতি হয়। BWDB-এর ঐতিহাসিক পরিসংখ্যানে ২০০৭ সালে দেশের প্রায় ৪২% এলাকা বন্যায় আক্রান্ত দেখানো হয়েছে।</p><div class="hs"><div><b>৪২%</b><span>আক্রান্ত এলাকা (BWDB)</span></div><div><b>জীবিকা</b><span>কৃষি, ঘর ও যোগাযোগে প্রভাব</span></div></div><div><a href="https://ffwc.gov.bd/app/reports/annual18" rel="noopener noreferrer" target="_blank">BWDB/FFWC পরিসংখ্যান ↗</a></div><p class="src">পরিসংখ্যান উৎসভেদে ভিন্ন হতে পারে।</p></div></article><article class="hc"><img alt="২০২২ সালে সুনামগঞ্জে বিশুদ্ধ পানির জন্য পানি সংগ্রহ করছেন বন্যায় ক্ষতিগ্রস্ত মানুষ" loading="lazy" onerror="this.remove()" src="https://www.unicef.org/bangladesh/sites/unicef.org.bangladesh/files/styles/media_large_image/public/%C2%A9%20UNICEF%20Bangladesh_2022_Mukut.jpg.webp?itok=dkOwcKXr"/><div class="hb"><span class="yr">২০২২</span><h3>সিলেট–সুনামগঞ্জের আকস্মিক বন্যা</h3><p style="margin:0">ভারী বৃষ্টি ও উজানের পানিতে উত্তর-পূর্বাঞ্চলের বিস্তীর্ণ এলাকা প্লাবিত হয়। পরিবারগুলো আশ্রয়কেন্দ্রে যায়; বিশুদ্ধ পানি, শৌচাগার, খাবার ও শিশুদের সুরক্ষা বড় চ্যালেঞ্জ হয়ে দাঁড়ায়।</p><div class="hs"><div><b>৭২ লাখ</b><span>আক্রান্ত মানুষ (UN/UNDP)</span></div><div><b>৪৫,০০০</b><span>ক্ষতিগ্রস্ত পানির উৎস (UNICEF)</span></div></div><div><a href="https://bangladesh.un.org/en/187390-severe-flash-floods-situation-update-2-22-june-2022" rel="noopener noreferrer" target="_blank">জাতিসংঘ প্রতিবেদন ↗</a> · <a href="https://www.unicef.org/bangladesh/en/stories/millions-children-flood-affected-bangladesh-need-food-clean-water-and-protection" rel="noopener noreferrer" target="_blank">UNICEF ↗</a></div><p class="src">ছবি: UNICEF Bangladesh / Mukut · ২০২২।</p></div></article><article class="hc"><img alt="বন্যার পানি — বিষয় বোঝানোর illustrative photo, ২০২৪ সালের আর্কাইভ ছবি নয়" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?auto=format&amp;fit=crop&amp;w=1200&amp;q=82"/><div class="hb"><span class="yr">জুন ২০২৪</span><h3>সিলেট বিভাগের আকস্মিক বন্যা</h3><p style="margin:0">ভারী বৃষ্টি ও উজানের পানিতে উত্তর-পূর্বাঞ্চলে বন্যা দেখা দেয়। UNICEF-এর ২১ জুন ২০২৪-এর আপডেট অনুযায়ী, তখন ২০ লাখের বেশি মানুষ, এর মধ্যে ৭.৭২ লাখের বেশি শিশু, আক্রান্ত হয়েছিল। এটি ওই তারিখের হিসাব—চূড়ান্ত মোট নয়।</p><div class="hs"><div><b>২০ লাখের বেশি</b><span>আক্রান্ত মানুষ (UNICEF, ২১ জুন)</span></div><div><b>৭.৭২ লাখের বেশি</b><span>আক্রান্ত শিশু (UNICEF)</span></div></div><div><a href="https://bangladesh.un.org/en/272242-over-772000-children-are-affected-flash-floods-north-east-bangladesh" rel="noopener noreferrer" target="_blank">UNICEF / UN Bangladesh ↗</a> · <a href="https://bangladesh.un.org/sites/default/files/2024-07/BGD_CMHRP_July_2024_FINAL_v1.pdf" rel="noopener noreferrer" target="_blank">জুন–ডিসেম্বর ২০২৪ response plan ↗</a></div><p class="src">ছবি: illustrative photo; ২০২৪ সালের ঘটনাস্থলের ছবি নয়।</p></div></article>
+<article class="hc"><img alt="প্লাবিত নদীপ্রবাহ — বিষয় বোঝানোর illustrative photo, ২০২৪ সালের আর্কাইভ ছবি নয়" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&amp;fit=crop&amp;w=1200&amp;q=82"/><div class="hb"><span class="yr">আগস্ট ২০২৪</span><h3>পূর্বাঞ্চলের ভয়াবহ বন্যা</h3><p style="margin:0">পূর্ব ও দক্ষিণ-পূর্বাঞ্চলের ১১ জেলায় বন্যা হয়। UNICEF-এর ৩১ আগস্ট ২০২৪-এর পরিস্থিতি প্রতিবেদনে ৫.৮২ মিলিয়ন মানুষ আক্রান্ত, ২.৩৬ মিলিয়ন শিশু আক্রান্ত, ৫৯ জনের মৃত্যুর খবর এবং ৫৪০,৫৩৮ জনের ৪,০০৩টি আশ্রয়কেন্দ্রে থাকার কথা বলা হয়। সংখ্যাগুলো ওই রিপোর্টের তারিখ অনুযায়ী।</p><div class="hs"><div><b>৫৮.২ লাখ</b><span>আক্রান্ত মানুষ (UNICEF, ৩১ আগস্ট)</span></div><div><b>৫৯</b><span>মৃত্যুর রিপোর্ট (UNICEF sitrep)</span></div></div><div><a href="https://www.unicef.org/media/161251/file/Bangladesh-Humanitarian-SitRep-Flash-Floods-03-Sep-2024.pdf" rel="noopener noreferrer" target="_blank">UNICEF Situation Report ↗</a> · <a href="https://bangladesh.un.org/en/277637-bangladesh-eastern-flash-floods-2024-situation-report-no-02" rel="noopener noreferrer" target="_blank">UN Bangladesh SitRep No. 02 ↗</a></div><p class="src">ছবি: illustrative photo; ২০২৪ সালের ঘটনাস্থলের ছবি নয়।</p></div></article>
+<article class="hc"><img alt="বন্যার পর নিরাপদ পানি বিতরণ ও পরিবারের সহায়তার ছবি" loading="lazy" onerror="this.remove()" src="https://www.unicef.org/bangladesh/sites/unicef.org.bangladesh/files/styles/hero_desktop/public/UN0659830.jpg.webp?itok=-BhzIOOK"/><div class="hb"><span class="yr">মানুষের গল্প</span><h3>পানি, আশ্রয় ও শিক্ষা</h3><p style="margin:0">বন্যা শুধু ঘর ডুবায় না—নিরাপদ পানি, শৌচাগার, স্কুলে যাওয়া, স্বাস্থ্য ও আয়ের ওপরও প্রভাব ফেলে। UNICEF-এর ২০২২ সালের প্রতিবেদনে শিশুদের পানি ও সুরক্ষার সংকট নথিভুক্ত হয়েছে।</p><div class="hs"></div><div><a href="https://www.unicef.org/bangladesh/en/stories/akil-takes-shelter-truck-days-no-water-or-food-floods-ravage-bangladesh" rel="noopener noreferrer" target="_blank">আকিলের পরিবারের অভিজ্ঞতা ↗</a> · <a href="https://www.undp.org/bangladesh/publications/community-led-housing-recovery-needs-assessment-north-and-north-eastern-flood-2022-bangladesh" rel="noopener noreferrer" target="_blank">UNDP ↗</a></div><p class="src">ছবি: UNICEF/UN0659830/Mukut. ব্যবহারের লাইসেন্স মূল সাইটে যাচাই করুন।</p></div></article></div>
+<div class="card" style="margin-top:18px;border-top-color:var(--yel)"><h3>ইতিহাস আমাদের কী শেখায়</h3><ul style="margin:6px 0 0;padding-left:20px"><li>আগাম সতর্কবার্তা পেলে জিনিসপত্র ও মানুষ আগেই নিরাপদে নেওয়া যায়।</li><li>বন্যা শেষ হলেও নিরাপদ পানি, শৌচাগার ও স্বাস্থ্য-সংকট চলতে থাকে — তাই মজুত ও পরিষ্কারের পরিকল্পনা জরুরি।</li><li>শিশু, নারী, বয়স্ক ও রোগীরা সবচেয়ে ঝুঁকিতে থাকেন — তাদের জন্য আলাদা প্রস্তুতি রাখুন।</li></ul></div>
+<p class="note">এই পাতা ঐতিহাসিক তথ্যের জন্য, বর্তমান সতর্কবার্তা নয়। ২০২৪ সালের সংখ্যা নির্দিষ্ট UN/UNICEF রিপোর্টের তারিখ অনুযায়ী; এগুলোকে একই সময়ের চূড়ান্ত হিসাব হিসেবে তুলনা করবেন না। ছবি লোড না হলেও কার্ড ও সূত্রের লিংক থাকবে।</p></section>
+
+<section class="s" data-p="news" id="news">
+ <span class="k">FLOODGUARD · NEWSROOM</span><h2>আপনার পছন্দের পত্রিকা, এক ক্লিকেই।</h2>
+ <p class="sub">বাংলা ও ইংরেজি সংবাদপত্রের তালিকা থেকে পছন্দেরটি বেছে নিন। ক্লিক করলেই সরাসরি সেই পত্রিকার অফিসিয়াল ওয়েবসাইটে সর্বশেষ খবর পড়তে পারবেন। কোনো অ্যাকাউন্ট বা আলাদা News API লাগবে না।</p>
+ <div class="news-banner"><div><span class="news-live"><i></i> সংবাদপত্র ডিরেক্টরি</span><h3>আজকের খবর জানতে<br><em>পছন্দের পত্রিকায় যান।</em></h3><p>এক জায়গায় দেশের জনপ্রিয় সংবাদমাধ্যম। পত্রিকা খুঁজুন, ভাষা বেছে নিন, তারপর সরাসরি পড়ুন।</p></div><div class="news-art" aria-hidden="true">📰<span>NEWS DIRECTORY</span></div></div>
+ <div class="news-stage"><div class="news-stage-head"><div><span class="k">সংবাদমাধ্যম বেছে নিন</span><h3>কোন পত্রিকা পড়বেন?</h3></div><span class="news-minibtn" id="newsCount" aria-live="polite">১৬টি সংবাদমাধ্যম</span></div>
+ <div class="news-simple-tools"><label for="newsFind">পত্রিকার নাম খুঁজুন<input id="newsFind" type="search" placeholder="যেমন: প্রথম আলো, Daily Star..." autocomplete="off"></label><div class="news-tabs" role="group" aria-label="পত্রিকার ভাষা"><button type="button" class="active" data-news-lang="all" aria-pressed="true">সব পত্রিকা</button><button type="button" data-news-lang="bn" aria-pressed="false">বাংলা</button><button type="button" data-news-lang="en" aria-pressed="false">English</button></div></div>
+ <div class="news-wheel-head"><div><strong>সংবাদপত্রের গ্যালারি</strong><span>তীরচিহ্ন চাপুন বা কার্ড সোয়াইপ করুন</span></div><div class="news-wheel-controls"><button id="newsPrev" type="button" aria-label="আগের পত্রিকা">←</button><span id="newsPosition" aria-live="polite">১ / ১৬</span><button id="newsNext" type="button" aria-label="পরের পত্রিকা">→</button></div></div><div class="news-wheel-viewport" id="newsWheelViewport" tabindex="0" aria-label="সংবাদপত্রের ঘূর্ণায়মান গ্যালারি; বাম ও ডান অ্যারো কী ব্যবহার করুন"><div class="news-wheel-glow" aria-hidden="true"></div><div class="news-publishers" id="newsPublishers"></div></div><div class="news-wheel-caption"><span class="news-wheel-dot"></span> মাঝের কার্ডে ক্লিক করলে সরাসরি সংবাদপত্রের ওয়েবসাইট খুলবে</div><p id="newsNoMatch" class="news-empty" hidden>এই নামে কোনো পত্রিকা পাওয়া যায়নি। অন্য নামে খুঁজুন।</p></div>
+ <div class="note">পত্রিকায় ক্লিক করলে সংশ্লিষ্ট সংবাদমাধ্যমের নিজস্ব ওয়েবসাইট নতুন ট্যাবে খুলবে। খবর ও আপডেট প্রকাশকদের নিয়ন্ত্রণে থাকে; FloodGuard সংবাদ প্রকাশ বা যাচাই করে না।</div>
+</section>
+<section class="s" data-p="ml" id="ml"><span class="k">ML মডেল</span><h2>স্টেশন-ভিত্তিক পূর্বাভাস (পরীক্ষামূলক)।</h2>
+<p class="sub">এই অংশের জন্য Python ML API চালু থাকতে হবে। স্থানীয় ডেমোর জন্য <code>127.0.0.1:8000</code> ব্যবহার করুন।</p><div class="section-experience" aria-label="ডেটা থেকে সম্ভাবনা বোঝার চেষ্টা।"><div><span class="eyebrow">✦ EXPERIMENTAL MODEL LAB</span><h3>ডেটা থেকে সম্ভাবনা বোঝার চেষ্টা।</h3><p>এটি পরীক্ষামূলক মডেল—সরকারি পূর্বাভাসের বিকল্প নয়। API সংযুক্ত থাকলে ফলাফল দেখা যাবে।</p><div class="pills"><span>✓ স্টেশন ইনপুট</span><span>✓ মডেল ফলাফল</span><span>✓ পরীক্ষামূলক</span></div></div><div class="experience-icon" aria-hidden="true">🧠</div></div>
+<div class="card"><div class="g2"><div><label for="ms">স্টেশন আইডি</label><input id="ms" placeholder="যেমন: 1" type="number"/></div><div><label for="md">তারিখ</label><input id="md" type="date"/></div></div>
+<button class="btn" id="mb" style="margin-top:14px">মডেল চালান</button><div class="res" id="mr" style="display:none"></div></div></section>
+<section class="s" data-p="emergency" id="emergency"><span class="k">জরুরি নম্বর</span><h2>জরুরি হলে সাহায্য নিন।</h2>
+<div class="g2">
+<a class="em" href="tel:999"><b>999</b><div>জাতীয় জরুরি সেবা<span>পুলিশ / ফায়ার সার্ভিস / অ্যাম্বুলেন্স</span></div></a>
+<a class="em" href="tel:1090"><b>1090</b><div>দুর্যোগের আগাম বার্তা<span>দুর্যোগ ব্যবস্থাপনা অধিদপ্তর (DDM)</span></div></a>
+<a class="em" href="tel:333"><b>333</b><div>জাতীয় তথ্য সেবা<span>সরকারি সেবা ও ত্রাণ তথ্য</span></div></a>
+<a class="em" href="tel:16263"><b>16263</b><div>স্বাস্থ্য বাতায়ন<span>ডাক্তারের পরামর্শ</span></div></a></div>
+<p class="note">কলটি আপনার ফোনের অ্যাপ খুলবে। এই সাইট নিজে কল করতে বা উদ্ধার পাঠাতে পারে না। নম্বর পরিবর্তন হতে পারে — আপনার এলাকার ইউনিয়ন পরিষদ ও সরকারি সাইটে যাচাই করুন।</p></section>
+</main>
+<footer><div class="wrap">
+<p><b>FloodGuard AI</b> — শিক্ষামূলক প্রোটোটাইপ; সরকারি সতর্কবার্তার বিকল্প নয়।</p><p><strong>সর্বশেষ হালনাগাদ:</strong> ৩০ অক্টোবর ২০২৬</p><p><a href="https://ffwc.gov.bd/" rel="noopener noreferrer" target="_blank">FFWC সরকারি সাইট ↗</a></p>
+<p>তথ্যসূত্র: <a href="https://open-meteo.com/" rel="noopener" target="_blank">Open-Meteo</a> · <a href="https://ddm.gov.bd/" rel="noopener" target="_blank">DDM</a> · <a href="https://www.ffwc.gov.bd/" rel="noopener" target="_blank">FFWC</a> · <a href="https://rapid.ddm.gov.bd/" rel="noopener" target="_blank">DDM Rapid</a></p></div></footer>
+<script>
+const API_BASE=(window.FLOODGUARD_API_BASE||"http://127.0.0.1:8000").replace(/\/$/,"");
+const $=id=>document.getElementById(id);
+const P=[["ঢাকা",23.81,90.41],["সিলেট",24.90,91.87],["সুনামগঞ্জ",25.07,91.40],["কুড়িগ্রাম",25.81,89.65],["গাইবান্ধা",25.33,89.54],["সিরাজগঞ্জ",24.45,89.70],["বগুড়া",24.85,89.37],["রংপুর",25.74,89.25],["রাজশাহী",24.37,88.60],["ময়মনসিংহ",24.75,90.41],["নেত্রকোণা",24.87,90.73],["চট্টগ্রাম",22.36,91.78],["নোয়াখালী",22.82,91.10],["ফেনী",23.02,91.40],["খুলনা",22.85,89.54],["বরিশাল",22.70,90.37],["জামালপুর",24.92,89.94],["লালমনিরহাট",25.92,89.45],["হবিগঞ্জ",24.37,91.42],["মৌলভীবাজার",24.48,91.77],["কুমিল্লা",23.46,91.18],["চাঁদপুর",23.23,90.66]];
+P.forEach((p,i)=>$("dist").add(new Option(p[0],i)));
+const bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+let rain3=null;
+function setGauge(p,l,s){$("water").style.setProperty("--g",p+"%");$("gl").textContent=l;$("gs").textContent=s}
+setGauge(18,"—","এলাকা বেছে দেখুন");
+$("rv").oninput=e=>$("rvv").textContent=bn(e.target.value)+"%";
+$("up").oninput=e=>$("upv").textContent=["না","মাঝারি","ভারী"][e.target.value];
+async function loadW(){
+ const p=P[$("dist").value],b=$("wbtn");b.disabled=true;$("wst").textContent="আবহাওয়া আনা হচ্ছে…";
+ try{
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${p[1]}&longitude=${p[2]}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m&daily=precipitation_sum,precipitation_probability_max&forecast_days=3&timezone=Asia%2FDhaka`;
+  const r=await fetch(u);if(!r.ok)throw new Error("weather request failed");const d=await r.json(),c=d.current,dy=d.daily;
+  $("wT").textContent=bn(Math.round(c.temperature_2m))+"°";$("wR").textContent=bn(c.precipitation);$("wH").textContent=bn(c.relative_humidity_2m)+"%";$("wW").textContent=bn(Math.round(c.wind_speed_10m));
+  rain3=dy.precipitation_sum.reduce((a,x)=>a+(x||0),0);
+  $("days").innerHTML=dy.time.map((t,i)=>`<div><b>${bn(new Date(t).getDate())}/${bn(new Date(t).getMonth()+1)}</b><br>${bn(Math.round(dy.precipitation_sum[i]))} মিমি<br><span class="sm mut">সম্ভাবনা ${bn(dy.precipitation_probability_max[i]??0)}%</span><div class="bars"><i style="width:${Math.min(100,dy.precipitation_sum[i]*1.5)}%"></i></div></div>`).join("");
+  $("wst").textContent=`${p[0]} · ৩ দিনে মোট আনুমানিক ${bn(Math.round(rain3))} মিমি বৃষ্টি · সূত্র: Open-Meteo`;
+ }catch(e){rain3=null;$("wst").textContent="আবহাওয়া আনা যায়নি — ইন্টারনেট দেখুন। চাইলে শুধু আপনার দেওয়া পরিস্থিতির তথ্য দিয়েও সূচক দেখতে পারেন।"}
+ b.disabled=false;
+}
+$("wbtn").onclick=loadW;
+$("dist").onchange=loadW;
+$("calc").onclick=()=>{
+ let s=0;const r=+$("rv").value;
+ s+=r>=100?45:r>=80?30:r>=60?15:r>=40?6:0;
+ if(rain3!==null)s+=rain3>=150?30:rain3>=80?20:rain3>=40?10:rain3>=15?4:0;
+ s+=+$("up").value*8;if($("low").checked)s+=10;if($("emb").checked)s+=10;
+ const L=[["স্বাভাবিক সতর্কতা","l0",22,"নিম্ন",["আবহাওয়া ও সরকারি বার্তা নিয়মিত দেখুন","জরুরি ব্যাগ হালনাগাদ রাখুন"]],["সতর্ক থাকুন","l1",42,"মাঝারি",["জরুরি ব্যাগ ও কাগজপত্র এখনই গুছান","মোবাইল/পাওয়ার ব্যাংক চার্জ দিন","আশ্রয়কেন্দ্রের পথ পরিবারের সবাইকে জানান"]],["উচ্চ ঝুঁকি","l2",68,"উচ্চ",["দামি ও জরুরি জিনিস উঁচুতে তুলুন","গবাদি পশু ও হাঁস-মুরগির নিরাপদ ব্যবস্থা করুন","স্থানীয় প্রশাসনের নির্দেশ অনুযায়ী সরে যাওয়ার প্রস্তুতি নিন"]],["অতি উচ্চ ঝুঁকি","l3",92,"অতি উচ্চ",["অবিলম্বে নিরাপদ আশ্রয়ে যাওয়ার কথা ভাবুন","বিপদে ৯৯৯ বা ইউনিয়ন পরিষদে যোগাযোগ করুন","বিদ্যুৎ মেইন বন্ধ করুন; বন্যার পানিতে হাঁটবেন না"]]];
+ s=Math.min(100,s);const i=s>=70?3:s>=45?2:s>=20?1:0,x=L[i];
+ const v=$("vul").checked?"<li>শিশু/বয়স্ক/অসুস্থদের আগে সরানোর পরিকল্পনা ও ওষুধ মজুত রাখুন</li>":"";
+ $("res").className="res "+x[1];$("res").innerHTML=`<h3>${x[0]} <span class="sm mut">(সূচক ${bn(s)}/১০০)</span></h3><span class="mut">এটি সাধারণ সূচক, ভবিষ্যদ্বাণী নয়।</span><ul>${x[4].map(t=>"<li>"+t+"</li>").join("")}${v}</ul>`;
+ setGauge(x[2],x[3],bn(Math.min(100,s))+"/১০০");$("res").scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+const KB=[
+[["ঢুকছে","উঠছে","পানি উঠ","ডুবে","বাড়ছে"],"পানি উঠলে এখনই:\n1) পরিবারের সবাইকে একসঙ্গে রাখুন, আগে শিশু/বয়স্কদের নিন।\n2) বিদ্যুৎ মেইন বন্ধ করুন, ভেজা তার/সুইচ ধরবেন না।\n3) জরুরি ব্যাগ, ওষুধ, ফোন ও কাগজপত্র নিন।\n4) উঁচু বা আশ্রয়কেন্দ্রে যান; বন্যার স্রোতের পানিতে হাঁটবেন না।\n5) বিপদে 999 -এ কল করুন।"],
+[["ব্যাগ","প্রস্তুতি","কী রাখ"],"জরুরি ব্যাগে রাখুন: নিরাপদ পানি, চিড়া-মুড়ি-বিস্কুট, ওরস্যালাইন, প্রয়োজনীয় ওষুধ, ফার্স্ট এইড, টর্চ+ব্যাটারি, পাওয়ার ব্যাংক, ম্যাচ/মোমবাতি, কাপড়, NID/জন্মসনদ/জমির কাগজের কপি, কিছু নগদ টাকা — সব জিপলক ব্যাগে।"],
+[["পানি","খাবার পানি","বিশুদ্ধ","ফুটা"],"নিরাপদ পানি: পানি নিরাপদ করতে স্বাস্থ্য কর্তৃপক্ষের নির্দেশ অনুযায়ী ফুটানো বা অনুমোদিত পানি-বিশুদ্ধকরণ পদ্ধতি ব্যবহার করুন। ফিটকিরি একা পানি জীবাণুমুক্ত করে না। টিউবওয়েল ডুবে গেলে তার পানি পরিষ্কার করার আগে পান করবেন না।"],
+[["খাদ্য","খাবার","রান্না"],"শুকনো খাবার মজুত করুন (চিড়া, মুড়ি, বিস্কুট, চাল, ডাল, লবণ, চিনি)। বন্যার পানিতে ভেজা বা নষ্ট খাবার খাবেন না। রান্নার আগে হাত ও বাসন ভালো করে ধুয়ে নিন।"],
+[["বিদ্যুৎ","শক","তার"],"বিদ্যুৎ: ঘরে পানি ঢোকার আগেই মেইন সুইচ বন্ধ করুন। ভেজা হাতে বা পানিতে দাঁড়িয়ে কোনো সুইচ/যন্ত্র ধরবেন না। ঝুলে থাকা তার দেখলে দূরে থাকুন ও বিদ্যুৎ অফিসে জানান।"],
+[["সাপ","কামড়"],"সাপে কামড়ালে: শান্ত থাকুন, আক্রান্ত অঙ্গ নাড়াবেন না, কাটা/চোষা/ঝাড়ফুঁক নয়। দ্রুত সরকারি হাসপাতালে যান (অ্যান্টিভেনম সেখানে আছে) এবং 999 বা 16263 -এ জানান।"],
+[["শিশু","বয়স্ক","গর্ভবতী","অসুস্থ"],"শিশু/বয়স্ক/গর্ভবতী/অসুস্থদের আগে নিরাপদ জায়গায় নিন। ওষুধ, ওরস্যালাইন ও গরম কাপড় সঙ্গে রাখুন। গর্ভবতীর প্রসবের সময় কাছে হলে আগেই স্বাস্থ্যকেন্দ্রে জানান।"],
+[["আশ্রয়","কেন্দ্র","শেল্টার"],"আশ্রয়কেন্দ্রের তালিকা ইউনিয়ন পরিষদ/উপজেলা প্রশাসন ও DDM-এর সাইটে পাওয়া যায়। আগে থেকেই পথ ও দূরত্ব জেনে রাখুন; নারী, শিশু ও প্রতিবন্ধীদের জন্য আলাদা ব্যবস্থা আছে কিনা জিজ্ঞেস করুন।"],
+[["পরে","বন্যার পর","ফিরে","পরিষ্কার"],"বন্যার পরে: ঘরে ঢোকার আগে কাঠামো ও বিদ্যুৎ নিরাপদ কিনা দেখুন; গ্লাভস-বুট পরে কাদা পরিষ্কার করুন; কুয়ো/টিউবওয়েল জীবাণুমুক্ত না করে পানি খাবেন না; ডায়রিয়া/জ্বর হলে স্বাস্থ্যকেন্দ্রে যান।"],
+[["ডায়রিয়া","পাতলা পায়খানা","ওরস্যালাইন","কলেরা"],"ডায়রিয়া হলে: ঘন ঘন ওরস্যালাইন বা লবণ-চিনির পানি দিন, খাবার বন্ধ করবেন না। প্রস্রাব কমে গেলে, বমি থামলে না বা শিশু নিস্তেজ হলে দ্রুত স্বাস্থ্যকেন্দ্রে নিন।"],
+[["গবাদি","গরু","ছাগল","হাঁস","মুরগি"],"গবাদি পশু: আগেই উঁচু জায়গা বা বাঁধ/আশ্রয়ে সরান, শুকনো খড়-খাবার ও বিশুদ্ধ পানি রাখুন। ভেটেরিনারি অফিসে টিকার খোঁজ নিন।"],
+[["ফোন","চার্জ","নেটওয়ার্ক","পাওয়ার"],"ফোন: ফুল চার্জ দিন, পাওয়ার ব্যাংক রাখুন, অপ্রয়োজনীয় অ্যাপ বন্ধ করে ব্যাটারি বাঁচান। জরুরি নম্বর কাগজে লিখে রাখুন, শেষ সম্বল হিসেবে SMS পাঠান।"],
+[["সাহায্য","বাঁচান","উদ্ধার","জরুরি","বিপদ"],"এখনই 999 -এ কল করুন। ঠিকানা, কতজন আটকা ও কে আহত — সংক্ষেপে বলুন। উঁচু জায়গায় থাকুন ও ফোন চালু রাখুন।"]];
+function ans(t){const q=t.toLowerCase();for(const [k,a] of KB)if(k.some(w=>q.includes(w)))return a;return"আমি এই প্রশ্নটি ঠিক বুঝতে পারিনি। ‘পানি ঢুকছে’, ‘জরুরি ব্যাগ’, ‘বিশুদ্ধ পানি’, ‘সাপ’, ‘বন্যার পর’ — এমন শব্দ দিয়ে লিখে দেখুন। বিপদে 999 -এ কল করুন।"}
+function bub(t,u){const d=document.createElement("div");d.className="b"+(u?" u":"");d.textContent=t;$("chat").append(d);$("chat").scrollTop=1e9}
+bub("আসসালামু আলাইকুম! আমি FloodGuard সহায়ক। কী জানতে চান? বিপদে 999 -এ কল করুন — এখানে অপেক্ষা করবেন না।");
+function ask(t){t=t.trim();if(!t)return;bub(t,1);setTimeout(()=>bub(ans(t)),250);$("q").value=""}
+["আমার ঘরে পানি ঢুকছে","জরুরি ব্যাগে কী রাখব?","নিরাপদ পানি কীভাবে পাব?","সাপে কামড়ালে কী করব?","বন্যার পরে কী করব?","আশ্রয়কেন্দ্র কোথায়?"].forEach(t=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>ask(t);$("chips").append(b)});
+$("sq").onclick=()=>ask($("q").value);$("q").onkeydown=e=>{if(e.key==="Enter")ask($("q").value)};
+const CL=["পানি (জনপ্রতি ৩ লিটার/দিন)","শুকনো খাবার (চিড়া/মুড়ি/বিস্কুট)","ওরস্যালাইন ও ফার্স্ট এইড","নিয়মিত ওষুধ","টর্চ ও অতিরিক্ত ব্যাটারি","পাওয়ার ব্যাংক (ফুল চার্জ)","NID/জন্মসনদ/জমির কাগজ (জিপলকে)","নগদ টাকা","গরম/শুকনো কাপড়","শিশুর খাবার/ডায়াপার","মোমবাতি ও ম্যাচ","জরুরি নম্বরের কাগজ"];
+let st=[];try{st=JSON.parse(localStorage.getItem("fg_cl")||"[]")}catch(e){}
+function renderCL(){$("cl").innerHTML=CL.map((t,i)=>`<label class="ck"><input type="checkbox" data-i="${i}" ${st.includes(i)?"checked":""}>${t}</label>`).join("");
+ $("cl").querySelectorAll("input").forEach(c=>c.onchange=()=>{const i=+c.dataset.i;st=c.checked?[...new Set([...st,i])]:st.filter(x=>x!==i);try{localStorage.setItem("fg_cl",JSON.stringify(st))}catch(e){}prog()});prog()}
+function prog(){const p=Math.round(st.length/CL.length*100);$("pb").style.width=p+"%";$("pv").textContent=bn(p)+"%"}
+$("rst").onclick=()=>{st=[];try{localStorage.removeItem("fg_cl")}catch(e){}renderCL()};renderCL();
+const SL=[["ad","প্রাপ্তবয়স্ক (১৩–৫৯)",0,10,2],["el","বয়স্ক (৬০+)",0,6,0],["ch","শিশু (১–১২ বছর)",0,8,1],["in","ছোট শিশু (১ বছরের নিচে)",0,3,0],["pg","গর্ভবতী/দুগ্ধদানকারী মা *",0,3,0],["db","ডায়াবেটিস রোগী *",0,4,0],["bp","উচ্চ রক্তচাপ/হৃদরোগী *",0,4,0],["sk","ডায়রিয়া/জ্বরে আক্রান্ত *",0,4,0],["dy","কতদিনের জন্য",1,14,3]];
+$("sl").innerHTML=SL.map(s=>`<div class="row" style="margin-top:8px"><label for="s_${s[0]}" style="margin:0;font-size:15.5px">${s[1]}</label><span class="v" id="v_${s[0]}"></span></div><input type="range" id="s_${s[0]}" min="${s[2]}" max="${s[3]}" value="${s[4]}">`).join("")+'<p class="sm mut">* চিহ্নিতরা উপরের সদস্যদের মধ্যেই গণ্য — এখানে শুধু বাড়তি ব্যবস্থার জন্য।</p>';
+const gv=k=>+$("s_"+k).value,r1=n=>bn((Math.round(n*10)/10).toString());
+function sup(){const a=gv("ad"),e=gv("el"),c=gv("ch"),i=gv("in"),pg=gv("pg"),db=gv("db"),bp=gv("bp"),sk=gv("sk"),d=gv("dy");
+ SL.forEach(s=>$("v_"+s[0]).textContent=bn(gv(s[0]))+(s[0]=="dy"?" দিন":" জন"));
+ const n=a+e+c+i,W=a+e*.9+c*.6+i*.15+pg*.2,water=Math.ceil((a*3+e*3+c*2+i*1+pg+sk*2)*d),ors=Math.ceil(n*d/2)+sk*d*4;
+ $("sum").innerHTML=`<div><b>${bn(n)}</b><span>মোট সদস্য</span></div><div><b>${bn(water)} লি.</b><span>পানি</span></div><div><b>${r1(W*d*.55)} কেজি</b><span>মূল খাবার</span></div><div><b>${bn(ors)}</b><span>ওরস্যালাইন</span></div>`;
+ const R=[["🍚 চাল/চিড়া/মুড়ি",r1(W*d*.4)+" কেজি","চিড়া-মুড়ি রান্না ছাড়াই খাওয়া যায়"],["🫘 ডাল/ছোলা",r1(W*d*.07)+" কেজি","খিচুড়ি ও প্রোটিনের জন্য"],["🛢 তেল",r1(W*d*.03)+" লিটার",""],["🧂 লবণ",r1(Math.max(.2,W*d*.01))+" কেজি","রোগী থাকলে কম লবণ"],["🍯 গুড়/চিনি",r1(W*d*.03)+" কেজি","ডায়াবেটিস থাকলে সীমিত"],["🍪 বিস্কুট/শুকনো কেক",r1(W*d*.08)+" কেজি","ভেজা না হয় এমন প্যাকে"],["🥜 চিনাবাদাম/খেজুর",r1(W*d*.04)+" কেজি","শক্তি ও আয়রন"],["🥛 গুঁড়া দুধ",r1((c+pg)*d*.03)+" কেজি","শিশু ও মায়ের জন্য"],["💧 পানি",bn(water)+" লিটার","ফোটানো/ট্যাবলেটে বিশুদ্ধ করুন"],["🧃 ওরস্যালাইন",bn(ors)+" প্যাকেট","১ প্যাকেট = ১ লিটার ফোটানো পানি"]];
+ $("tb").innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>${bn(r[1])}</td><td class="sm mut">${r[2]}</td></tr>`).join("");
+ const S=[];const add=(t,l,w)=>S.push(`<div class="sp ${w?"w":""}"><h3>${t}</h3><ul>${l.map(x=>"<li>"+x+"</li>").join("")}</ul></div>`);
+ if(i)add("👶 ছোট শিশু ("+bn(i)+" জন)",["মায়ের বুকের দুধ চালু রাখুন — সবচেয়ে নিরাপদ খাবার।","ফর্মুলা হলে অতিরিক্ত টিন রাখুন; পানি ফুটিয়ে ঠান্ডা করে কাপ-চামচে খাওয়ান, বোতল এড়ান।","৬ মাসের বেশি বয়সে নরম খিচুড়ি, সুজি বা সেদ্ধ ডিম দিন; ১ বছরের নিচে মধু দেবেন না।","শিশুর ওষুধ, ওরস্যালাইন ও শুকনো কাপড় আলাদা ব্যাগে রাখুন।"]);
+ if(c)add("🧒 শিশু ("+bn(c)+" জন)",["খিচুড়ি, চিড়া-গুড়, কলা, গুঁড়া দুধ ও বিস্কুট — ছোট ছোট করে বারবার দিন।","বাইরের/খোলা খাবার ও অবিশুদ্ধ পানি দেবেন না।","হাত ধোয়ার সাবান ও ওরস্যালাইন সঙ্গে রাখুন।"]);
+ if(e)add("🧓 বয়স্ক ("+bn(e)+" জন)",["চিবাতে কষ্ট হলে নরম খাবার: খিচুড়ি, সুজি, সেদ্ধ সবজি।","কম লবণ, কম তেল; নিয়মিত ওষুধ অন্তত ৭–১৪ দিনের মজুত রাখুন।","চশমা, হাঁটার লাঠি ও প্রেসক্রিপশনের কপি গুছিয়ে রাখুন।"]);
+ if(pg)add("🤰 গর্ভবতী/দুগ্ধদানকারী মা ("+bn(pg)+" জন)",["বাড়তি পানি ও খাবার; খেজুর, বাদাম, সেদ্ধ ডিম, ডাল রাখুন।","আয়রন-ফলিক অ্যাসিডসহ নিয়মিত ওষুধ ও চেকআপ কাগজ সঙ্গে রাখুন।","প্রসবের তারিখ কাছে হলে আগেই স্বাস্থ্যকেন্দ্র/স্বাস্থ্যকর্মীকে জানান; 999 বা 16263 -এ কল করুন।"],1);
+ if(db)add("🩸 ডায়াবেটিস ("+bn(db)+" জন)",["ওষুধ/ইনসুলিন অন্তত ৭–১৪ দিনের ও প্রেসক্রিপশনের কপি রাখুন; ইনসুলিন ঠান্ডা রাখার ছোট ব্যাগ/ব্যবস্থা ভাবুন।","মিষ্টি ও গুড়ভরা খাবারের বদলে ছোলা, ডাল, বাদাম, সেদ্ধ ডিম বেশি রাখুন; খাবার সময়মতো খান।","হঠাৎ কাঁপুনি, ঘাম বা দুর্বলতা হলে খাওয়ার জন্য সঙ্গে গ্লুকোজ/চিনি রাখুন।"],1);
+ if(bp)add("❤️ উচ্চ রক্তচাপ/হৃদরোগ ("+bn(bp)+" জন)",["নিয়মিত ওষুধ আগে থেকেই বেশি করে মজুত করুন।","শুঁটকি, আচার ও বেশি লবণের প্যাকেট খাবার এড়ান।","বুকে ব্যথা, শ্বাসকষ্ট বা অজ্ঞান ভাব হলে সঙ্গে সঙ্গে 999 -এ কল করুন।"],1);
+ if(sk)add("🤒 ডায়রিয়া/জ্বর ("+bn(sk)+" জন)",["ঘন ঘন ওরস্যালাইন; পানি সবসময় ফুটিয়ে ঠান্ডা করে দিন।","খিচুড়ি, চালের পানি, কলা দিন — খাবার বন্ধ রাখবেন না।","আলাদা বাসন-গ্লাস ও সাবান-হাত ধোয়া। ঘন ঘন বমি, পায়খানায় রক্ত, প্রস্রাব কমে যাওয়া বা শিশু নিস্তেজ হলে দ্রুত হাসপাতালে নিন।"],1);
+ if(!S.length)S.push('<div class="sp"><h3>সাধারণ পরামর্শ</h3><ul><li>উপরে বিশেষ সদস্য (শিশু, বয়স্ক, রোগী) যোগ করলে তাদের আলাদা তালিকা এখানে আসবে।</li></ul></div>');
+ $("sp").innerHTML=S.join("")}
+document.querySelectorAll("#sl input").forEach(x=>x.oninput=sup);sup();
+$("mb").onclick=async()=>{const r=$("mr");r.style.display="block";r.className="res";r.textContent="API থেকে ফলাফল আনা হচ্ছে…";
+ try{const x=await fetch(`${API_BASE}/api/predict-from-data`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({station_id:$("ms").value,date:$("md").value})});const d=await x.json();if(!x.ok)throw new Error(typeof d.detail==="string"?d.detail:JSON.stringify(d.detail));r.className="res l1";r.innerHTML="<h3>মডেলের ফলাফল</h3><pre style='white-space:pre-wrap;margin:0;font:inherit'></pre>";r.querySelector("pre").textContent=JSON.stringify(d,null,2)}
+ catch(e){r.className="res l2";r.textContent="Prediction API পাওয়া যায়নি। backend চালু আছে কি না এবং dataset/model যোগ করা হয়েছে কি না পরীক্ষা করুন ("+e.message+")।"}};
+const RT=["home","risk","monitor","assistant","prepare","supplies","after","history","news","ml","emergency"];
+function route(){let p=(location.hash||"#home").slice(1);if(!RT.includes(p))p="home";document.querySelectorAll("[data-p]").forEach(e=>e.hidden=e.dataset.p!==p);document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+p));window.scrollTo(0,0)}
+addEventListener("hashchange",route);route();
+loadW();
+</script>
+<div id="offlineBanner" role="status" style="display:none;position:fixed;bottom:12px;left:12px;right:12px;z-index:9999;background:#294d3b;color:#fff;padding:12px 16px;border-radius:14px;box-shadow:0 8px 30px #0002;font-size:14px">আপনি অফলাইনে আছেন। সংরক্ষিত প্রস্তুতি, চেকলিস্ট, সহায়ক, জরুরি নম্বর ও স্থির নদী-চিত্র ব্যবহার করা যাবে; নতুন আবহাওয়া ও সরকারি live তথ্যের জন্য ইন্টারনেট দরকার।</div>
+<script>
+(function(){
+ const b=document.getElementById('offlineBanner');
+ function net(){if(b)b.style.display=navigator.onLine?'none':'block';}
+ window.addEventListener('online',net);window.addEventListener('offline',net);net();
+ if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
+   window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+ }
+})();
+</script>
+<script>
+(function(){
+ const data=[['🌧️','ঝুঁকি ও আবহাওয়া','আপনার এলাকার আবহাওয়া, বৃষ্টির পূর্বাভাস এবং নিজের পরিস্থিতি অনুযায়ী প্রস্তুতির সূচক দেখুন।','risk'],['💬','বাংলা সহায়ক','বন্যার সময় কী করবেন বুঝতে না পারলে বাংলায় প্রশ্ন লিখে সাধারণ নিরাপত্তা-পরামর্শ জানুন।','assistant'],['🎒','প্রস্তুতি','পরিবারের জরুরি পরিকল্পনা করুন, ব্যাগের তালিকা তৈরি করুন এবং প্রস্তুতির অগ্রগতি দেখুন।','prepare'],['🍚','খাদ্য-পানি','পরিবারের সদস্য ও দিনের সংখ্যা অনুযায়ী খাবার এবং নিরাপদ পানির আনুমানিক পরিকল্পনা করুন।','supplies'],['🧼','বন্যার পরে','পানি, খাবার, বিদ্যুৎ ও স্বাস্থ্যের বিষয়ে নিরাপদে ঘরে ফেরার প্রয়োজনীয় তথ্য জানুন।','after'],['📜','বন্যার ইতিহাস','বাংলাদেশের উল্লেখযোগ্য বন্যার ইতিহাস, ছবি ও তথ্যসূত্র এক জায়গায় দেখুন।','history'],['🧠','ML মডেল','স্টেশনভিত্তিক পরীক্ষামূলক মেশিন লার্নিং ফলাফল ও সীমাবদ্ধতা বুঝুন।','ml'],['☎️','জরুরি নম্বর','জাতীয় জরুরি সেবা, দুর্যোগের আগাম বার্তা ও স্বাস্থ্য সহায়তার নম্বর দ্রুত খুঁজুন।','emergency'],['🌊','নদী পর্যবেক্ষণ','যাচাইকৃত নদী পর্যবেক্ষণ স্টেশন, পানির উচ্চতা, বিপৎসীমা এবং সর্বশেষ তথ্যের অবস্থা দেখুন।','monitor'],['📰','সংবাদপত্রের গ্যালারি','বাংলা ও ইংরেজি সংবাদমাধ্যমের নিজস্ব ওয়েবসাইটে সরাসরি প্রবেশ করুন।','news']];
+ const choices=[...document.querySelectorAll('[data-spot]')];const panel=document.querySelector('.spot-feature');if(!panel)return;
+ function activate(i){const d=data[i];choices.forEach((b,j)=>{b.classList.toggle('active',i===j);b.setAttribute('aria-pressed',String(i===j))});document.getElementById('spotVisual').textContent=d[0];document.getElementById('spotTitle').textContent=d[1];document.getElementById('spotDescription').textContent=d[2];document.getElementById('spotLink').href='#'+d[3];document.getElementById('spotCount').textContent=String(i+1).padStart(2,'0').replace(/\d/g,x=>'০১২৩৪৫৬৭৮৯'[x])+' / ১০';}
+ choices.forEach((b,i)=>{b.addEventListener('focus',()=>activate(i));b.addEventListener('click',()=>activate(i));});activate(0);
+})();
+</script>
+<script>
+(function(){const chooser=document.getElementById('riskChooser'), panels={weather:document.getElementById('riskWeather'),situation:document.getElementById('riskSituation')};function selectRisk(which){chooser.hidden=!!which;Object.entries(panels).forEach(([key,el])=>el.hidden=key!==which);if(which)document.getElementById('risk').scrollIntoView({behavior:'smooth',block:'start'});}document.querySelectorAll('[data-risk]').forEach(b=>b.addEventListener('click',()=>selectRisk(b.dataset.risk)));document.querySelectorAll('.back-choice').forEach(b=>b.addEventListener('click',()=>selectRisk(null)));window.addEventListener('hashchange',()=>{if(location.hash==='#risk')selectRisk(null)});selectRisk(null);})();
+</script><script>(function(){const ids=['rv','up','low','emb','vul'];const fields=ids.map(id=>document.getElementById(id));const bar=document.getElementById('riskInputBar'),label=document.getElementById('riskInputProgress'),title=document.getElementById('riskLiveTitle'),desc=document.getElementById('riskLiveText'),icon=document.getElementById('riskLiveIcon');function update(){let touched=fields.filter(f=>f.dataset.touched==='1').length;label.textContent=String(touched).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d])+' / ৫';bar.style.width=(touched/5*100)+'%';if(touched){title.textContent='তথ্য নেওয়া হচ্ছে';desc.textContent='আরও তথ্য দিন অথবা নিচে বিশ্লেষণ করুন';icon.textContent='📋';}else{title.textContent='আপনার তথ্য দিন';desc.textContent='ফল জানতে নিচের প্রশ্নগুলোর উত্তর দিন';icon.textContent='🛡️';}}fields.forEach(f=>{['input','change'].forEach(ev=>f.addEventListener(ev,()=>{f.dataset.touched='1';update()}))});document.getElementById('calc').addEventListener('click',()=>{title.textContent='বিশ্লেষণ সম্পন্ন';desc.textContent='নিচের সারাংশ ও নিরাপত্তা পরামর্শ দেখুন';icon.textContent='✅';});update()})();</script><script>
+(function(){
+const outlets=[
+['প্রথম আলো','prothomalo.com','bn','🗞️'],['The Daily Star','thedailystar.net','en','⭐'],
+['bdnews24.com','bdnews24.com','bn','🌐'],['যুগান্তর','jugantor.com','bn','📰'],
+['ইত্তেফাক','ittefaq.com.bd','bn','📄'],['কালের কণ্ঠ','kalerkantho.com','bn','🗞️'],
+['সমকাল','samakal.com','bn','📰'],['বাংলা ট্রিবিউন','banglatribune.com','bn','🌍'],
+['Dhaka Tribune','dhakatribune.com','en','🗞️'],['New Age','newagebd.net','en','📄'],
+['The Business Standard','tbsnews.net','en','📊'],['দৈনিক জনকণ্ঠ','dailyjanakantha.com','bn','📰'],
+['আমাদের সময়','dainikamadershomoy.com','bn','📄'],['বণিক বার্তা','bonikbarta.com','bn','📈'],
+['বাসস (BSS)','bssnews.net','bn','🇧🇩'],['UNB','unb.com.bd','en','🌐']
+];
+const box=document.getElementById('newsPublishers'),search=document.getElementById('newsFind'),count=document.getElementById('newsCount'),empty=document.getElementById('newsNoMatch');
+let language='all';
+for(const [name,domain,lang,emoji] of outlets){
+ const a=document.createElement('a');a.className='news-publisher';a.href='https://'+domain+'/';a.target='_blank';a.rel='noopener noreferrer';a.dataset.lang=lang;a.dataset.search=(name+' '+domain).toLocaleLowerCase();
+ const icon=document.createElement('span');icon.className='np-icon';
+ const logo=document.createElement('img');logo.src='https://www.google.com/s2/favicons?domain='+encodeURIComponent(domain)+'&sz=128';logo.alt=name+' লোগো';logo.loading='lazy';logo.referrerPolicy='no-referrer';logo.onerror=()=>{if(!logo.dataset.fallback){logo.dataset.fallback='1';logo.src='https://icons.duckduckgo.com/ip3/'+encodeURIComponent(domain)+'.ico';}else{logo.remove();icon.textContent=emoji}};icon.append(logo);
+ const newsLabel=document.createElement('span');newsLabel.className='np-news-label';newsLabel.textContent='NEWS · সংবাদপত্র';
+ const title=document.createElement('strong');title.textContent=name;
+ const subtitle=document.createElement('small');subtitle.textContent=domain+' · ওয়েবসাইট খুলুন ↗';
+ a.append(newsLabel,icon,title,subtitle);box.append(a);
+}
+const prev=document.getElementById('newsPrev'),next=document.getElementById('newsNext'),position=document.getElementById('newsPosition'),viewport=document.getElementById('newsWheelViewport');
+let current=0,visibleCards=[];
+function draw(){const narrow=window.innerWidth<700;const step=narrow?110:195;const rise=narrow?23:34;
+ visibleCards.forEach((card,i)=>{let d=i-current;const abs=Math.abs(d);card.style.zIndex=String(30-abs);card.style.opacity=abs>3?'0':String(Math.max(.65,1-abs*.10));card.style.pointerEvents=abs>3?'none':'auto';card.style.filter='none';card.style.transform=`translate(calc(-50% + ${d*step}px),calc(-50% + ${abs*rise}px)) rotate(${d* -11}deg) scale(${Math.max(.78,1-abs*.075)})`;card.setAttribute('aria-label',card.querySelector('strong').textContent+' — ওয়েবসাইট খুলুন');card.tabIndex=abs>2?-1:0;});
+ position.textContent=visibleCards.length?`${current+1} / ${visibleCards.length}`:'০ / ০';prev.disabled=current===0;next.disabled=current>=visibleCards.length-1;
+}
+function move(delta){if(!visibleCards.length)return;current=Math.max(0,Math.min(visibleCards.length-1,current+delta));draw()}
+function filter(){const q=search.value.trim().toLocaleLowerCase();visibleCards=[];for(const card of box.children){const match=(language==='all'||card.dataset.lang===language)&&card.dataset.search.includes(q);card.hidden=!match;if(match)visibleCards.push(card)}current=0;count.textContent=visibleCards.length+'টি সংবাদমাধ্যম';empty.hidden=visibleCards.length!==0;viewport.hidden=visibleCards.length===0;draw()}
+search.addEventListener('input',filter);
+document.querySelectorAll('[data-news-lang]').forEach(btn=>btn.addEventListener('click',()=>{language=btn.dataset.newsLang;document.querySelectorAll('[data-news-lang]').forEach(b=>{const active=b===btn;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});filter()}));
+prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+viewport.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();move(e.key==='ArrowRight'?1:-1)}});
+let startX=null;viewport.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});viewport.addEventListener('touchend',e=>{if(startX===null)return;const delta=e.changedTouches[0].clientX-startX;if(Math.abs(delta)>35)move(delta<0?1:-1);startX=null},{passive:true});
+box.addEventListener('click',e=>{const card=e.target.closest('.news-publisher');if(!card)return;const index=visibleCards.indexOf(card);if(index!==current&&index>=0){e.preventDefault();current=index;draw()}});
+window.addEventListener('resize',draw);filter();
+})();
+</script><script>
+(function(){
+const $id=id=>document.getElementById(id);
+const status=$id('river-status'), health=$id('river-health'), checked=$id('river-checked'), list=$id('river-stations');
+if(!status)return;
+const bn=s=>String(s).replace(/[0-9]/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+async function refresh(){
+ status.className='mut';status.textContent='সরকারি তথ্যের সংযোগ যাচাই করা হচ্ছে…';
+ health.textContent='যাচাই হচ্ছে';list.replaceChildren();
+ const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),9000);
+ try{
+  const res=await fetch('/api/river-stations',{signal:ctrl.signal,cache:'no-store'});
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  const data=await res.json();
+  if(!data || data.status!=='ok' || !Array.isArray(data.stations))throw new Error('Unverified data format');
+  const rows=data.stations.filter(s=>s&&typeof s.name==='string'&&Number.isFinite(s.level_m)&&Number.isFinite(s.danger_level_m)&&typeof s.observed_at==='string'&&Number.isFinite(Date.parse(s.observed_at)));
+  if(!rows.length)throw new Error('No verified stations');
+  const age=Math.max(...rows.map(s=>Date.now()-Date.parse(s.observed_at)));
+  if(age>24*3600*1000 || age < -3600*1000)throw new Error('Station data is stale');
+  for(const s of rows.slice(0,30)){
+   const item=document.createElement('div');item.className='station-item';
+   const title=document.createElement('strong');title.textContent=s.name;
+   const detail=document.createElement('small');
+   detail.textContent='পানির উচ্চতা '+bn(s.level_m)+' মি. · বিপৎসীমা '+bn(s.danger_level_m)+' মি. · পর্যবেক্ষণ '+new Date(s.observed_at).toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'});
+   item.append(title,detail);list.append(item);
+  }
+  status.className='mut available';status.textContent='সর্বশেষ উপলব্ধ যাচাইকৃত পর্যবেক্ষণ (রিয়েল-টাইম নিশ্চয়তা নয়)';
+  health.textContent='তথ্য উপলব্ধ';
+ }catch(e){
+  status.textContent='সরকারি স্টেশন ডেটা এই মুহূর্তে উপলব্ধ নয়। FFWC/BWDB-এর অফিসিয়াল সাইটে যাচাই করুন।';
+  health.textContent='তথ্য অনুপলব্ধ';list.replaceChildren();
+ }finally{clearTimeout(timer);checked.textContent=new Date().toLocaleString('bn-BD',{timeZone:'Asia/Dhaka'});}
+}
+$id('refresh-river').addEventListener('click',refresh);refresh();
+})();
+</script>
+<script>
+/* Configure the deployed Cloudflare visitor worker URL below. */
+(async function loadVisitorCounter(){
+  const counter = document.getElementById('visitor-total');
+  const endpoint = 'https://YOUR-VISITOR-WORKER.YOUR-SUBDOMAIN.workers.dev/visit';
+  if (endpoint.includes('YOUR-VISITOR-WORKER')) {
+    counter.textContent = 'সেটআপ বাকি';
+    return;
+  }
+  try {
+    const response = await fetch(endpoint, {method:'POST', cache:'no-store'});
+    if (!response.ok) throw new Error('Counter unavailable');
+    const data = await response.json();
+    if (!Number.isSafeInteger(data.total) || data.total < 0) throw new Error('Invalid count');
+    counter.textContent = data.total.toLocaleString('bn-BD');
+  } catch (error) {
+    counter.textContent = 'অনুপলব্ধ';
+    console.warn('Visitor counter:', error.message);
+  }
+})();
+</script>
+</body>
+</html>

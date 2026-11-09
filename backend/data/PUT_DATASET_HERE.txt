@@ -1,0 +1,1 @@
+Place your verified historical station/day dataset here as all_stations.parquet or all_stations.csv. See ../README.md. No synthetic training data is included.
