@@ -1,7 +1,4 @@
 .venv/
 __pycache__/
 *.py[cod]
-models/*.joblib
-data/*.parquet
-data/*.csv
 .env
